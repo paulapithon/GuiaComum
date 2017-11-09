@@ -12,7 +12,7 @@ public class AberturaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abertura);
 
-        //Mostra tela inicial por 2 segundos
+        //Mostra tela splash por 2 segundos
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -23,6 +23,6 @@ public class AberturaActivity extends AppCompatActivity {
 
     private void iniciarMenu () {
         //Inicia tela de menu principal
-        startActivity(new Intent(AberturaActivity.this, MenuPrincipalActivity.class));
+        startActivity(new Intent(AberturaActivity.this, MenuInicialActivity.class));
     }
 }

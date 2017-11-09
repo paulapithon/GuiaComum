@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Guia Comum Do Recife</string>
+    <string name="nome_cabecalho">GUIA COMUM DO RECIFE</string>
+
 </resources>
