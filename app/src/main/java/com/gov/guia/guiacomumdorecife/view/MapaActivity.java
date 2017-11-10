@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
@@ -16,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.BtnMapa;
 import com.gov.guia.guiacomumdorecife.util.Constants;
@@ -84,12 +87,15 @@ public class MapaActivity extends AppCompatActivity {
         mapaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO adicionar esse código dentro do diálogo
                 Intent intent = new Intent(MapaActivity.this, LivrosActivity.class);
-                intent.putExtra(Constants.DATABASE_INDEX, btn.getLivros());
+                intent.putExtra(Constants.DATABASE_INDEX, index);
                 startActivity(intent);
             }
         });
         mBotoesMapa.addView(mapaBtn);
+        //Adiciona na lista da aplicação
+        GuiaComumApplication.addToHashMap(index, btn);
 
     }
 
