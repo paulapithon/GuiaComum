@@ -11,6 +11,7 @@ import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.BtnMapa;
 import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
+import com.gov.guia.guiacomumdorecife.view.adapter.LivrosAdapter;
 
 import java.util.ArrayList;
 
