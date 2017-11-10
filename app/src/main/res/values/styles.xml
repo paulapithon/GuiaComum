@@ -17,6 +17,7 @@
     </style>
 
     <!--Fonte da aplicação-->
+    <style name="AppTheme.Widget"/>
     <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
         <item name="fontPath">fonts/Constantia.ttf</item>
     </style>

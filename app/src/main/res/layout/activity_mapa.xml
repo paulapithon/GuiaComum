@@ -1,16 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gov.guia.guiacomumdorecife.MapaActivity">
+    android:orientation="vertical"
+    tools:context="com.gov.guia.guiacomumdorecife.MapaActivity"
+    android:background="@color/rosa_claro">
 
     <include
         layout="@layout/header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_mapa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/mapa" />
+
+                <ImageButton
+                    android:id="@+id/btn_0"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_baixar_olhar"
+                    android:layout_marginLeft="400dp"
+                    android:layout_marginStart="400dp"
+                    android:layout_marginTop="300dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_assombrado"
+                    android:layout_marginLeft="800dp"
+                    android:layout_marginStart="800dp"
+                    android:layout_marginTop="700dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_becos"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginStart="300dp"
+                    android:layout_marginTop="600dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_de_uso"
+                    android:layout_marginLeft="950dp"
+                    android:layout_marginStart="950dp"
+                    android:layout_marginTop="900dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_invisiveis"
+                    android:layout_marginLeft="500dp"
+                    android:layout_marginStart="500dp"
+                    android:layout_marginTop="800dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_levantar_olhar"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="350dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_6"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_nao_existem"
+                    android:layout_marginLeft="750dp"
+                    android:layout_marginStart="750dp"
+                    android:layout_marginTop="600dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_7"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_pao_bixo"
+                    android:layout_marginLeft="400dp"
+                    android:layout_marginStart="400dp"
+                    android:layout_marginTop="900dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_8"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_que_resistem"
+                    android:layout_marginLeft="850dp"
+                    android:layout_marginStart="850dp"
+                    android:layout_marginTop="350dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_9"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_se_movem"
+                    android:layout_marginLeft="500dp"
+                    android:layout_marginStart="500dp"
+                    android:layout_marginTop="550dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_10"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_tipos_recife"
+                    android:layout_marginLeft="850dp"
+                    android:layout_marginStart="850dp"
+                    android:layout_marginTop="100dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_11"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/btn_silencio"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginStart="300dp"
+                    android:layout_marginTop="600dp"/>
+
+
+            </RelativeLayout>
+
+
+
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

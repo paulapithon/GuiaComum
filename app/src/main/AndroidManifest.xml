@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuInicialActivity" />
-        <activity android:name=".MapaActivity"></activity>
+        <activity android:name=".MapaActivity" />
+        <activity android:name=".LivrosActivity"></activity>
     </application>
 
 </manifest>
