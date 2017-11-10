@@ -12,6 +12,9 @@ import com.bumptech.glide.Glide;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
+import com.gov.guia.guiacomumdorecife.util.PlayAudioManager;
+
+import java.security.spec.ECField;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +29,8 @@ public class ConteudoActivity extends AppCompatActivity {
     ImageButton mImagem;
     @BindView(R.id.resumo_conteudo)
     TextView mResumo;
+    @BindView(R.id.btn_audio)
+    ImageButton mAudioBtn;
 
     private Livro livro;
 
@@ -48,9 +53,26 @@ public class ConteudoActivity extends AppCompatActivity {
         if (livro.getResumo() != null) { mResumo.setText(livro.getResumo()); }
         else { mResumo.setVisibility(View.GONE); }
 
-        if (livro.getImagens().get(0) != null) { Glide.with(this).load(livro.getImagens().get(0)).into(mImagem); }
+        if (livro.getImagens() != null) { Glide.with(this).load(livro.getImagens().get(0)).into(mImagem); }
         else { mImagem.setVisibility(View.GONE); }
 
+        //Setar botões de interação
+        if (livro.getAudio() == null) {  mAudioBtn.setVisibility(View.GONE); }
+
+    }
+
+    private void setupPlayer (boolean play) {
+        try {
+            if (play) { PlayAudioManager.playAudio(this, livro.getAudio()); }
+            else { PlayAudioManager.killMediaPlayer(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @OnClick(R.id.btn_audio)
+    public void onAudio () {
+        setupPlayer(true);
     }
 
     @OnClick(R.id.imagem_conteudo)
@@ -62,6 +84,7 @@ public class ConteudoActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_voltar)
     public void onBack () {
+        setupPlayer(false);
         onBackPressed();
     }
 

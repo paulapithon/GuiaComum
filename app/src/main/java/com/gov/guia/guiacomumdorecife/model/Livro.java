@@ -12,6 +12,7 @@ public class Livro implements Serializable{
     private String nome;
     private ArrayList<String> imagens;
     private String resumo;
+    private String audio;
 
     public Livro () {
         super();
@@ -27,5 +28,9 @@ public class Livro implements Serializable{
 
     public String getResumo() {
         return resumo;
+    }
+
+    public String getAudio() {
+        return audio;
     }
 }
