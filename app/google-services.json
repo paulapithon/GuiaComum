@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "339550354542",
+    "firebase_url": "https://guiacomum.firebaseio.com",
+    "project_id": "guiacomum",
+    "storage_bucket": "guiacomum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339550354542:android:20c916567e0dc25a",
+        "android_client_info": {
+          "package_name": "com.gov.guia.guiacomumdorecife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339550354542-hkvggdebg7gchgmb7s6rbvb6bp9poqda.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gov.guia.guiacomumdorecife",
+            "certificate_hash": "76c796f7f6e281b8cd84cb36300f233c70f51f54"
+          }
+        },
+        {
+          "client_id": "339550354542-sfc7k9e7o09g6pptobvepk27itmuvssr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6h_jsHh0PHkNJCJ3M-hrMJEvTVyfTuoE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339550354542-sfc7k9e7o09g6pptobvepk27itmuvssr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

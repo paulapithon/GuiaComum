@@ -2,85 +2,96 @@ package com.gov.guia.guiacomumdorecife.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.gov.guia.guiacomumdorecife.R;
+import com.gov.guia.guiacomumdorecife.model.BtnMapa;
+import com.gov.guia.guiacomumdorecife.util.Constants;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MapaActivity extends AppCompatActivity {
 
+    @BindView(R.id.btns_mapa)
+    RelativeLayout mBotoesMapa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         ButterKnife.bind(this);
+
+        setupDatabase();
     }
 
-    //TODO create imagebuttons programatically
-    @OnClick(R.id.btn_0)
-    public void onLivro0 () {
-        startActivity(new Intent(this, LivrosActivity.class));
+    private void setupDatabase() {
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference().child(Constants.DATABASE_MAPA).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                BtnMapa btn = dataSnapshot.getValue(BtnMapa.class);
+                criarBtnMapa(btn, dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) { }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+
     }
 
-    @OnClick(R.id.btn_1)
-    public void onLivro1 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
+    private void criarBtnMapa (final BtnMapa btn, final String index) {
 
-    @OnClick(R.id.btn_2)
-    public void onLivro2 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
+        //TODO criar pasta com dimensões
+        //Seta os parametros do layout
+        RelativeLayout.LayoutParams parametros = new RelativeLayout.LayoutParams(200,200);
+        parametros.setMargins(
+                (int)(mBotoesMapa.getWidth() * btn.getX()),
+                (int)(mBotoesMapa.getHeight() * btn.getY()),
+                0,
+                0
+        );
 
-    @OnClick(R.id.btn_3)
-    public void onLivro3 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
+        //Cria botao programaticamente
+        ImageButton mapaBtn = new ImageButton(this);
+        Glide.with(this).load(btn.getIcone()).into(mapaBtn);
+        mapaBtn.setLayoutParams(parametros);
+        mapaBtn.setBackgroundColor(Color.TRANSPARENT);
+        mapaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapaActivity.this, LivrosActivity.class);
+                intent.putExtra(Constants.DATABASE_INDEX, btn.getLivros());
+                startActivity(intent);
+            }
+        });
+        mBotoesMapa.addView(mapaBtn);
 
-    @OnClick(R.id.btn_4)
-    public void onLivro4 () {
-        startActivity(new Intent(this, LivrosActivity.class));
     }
-
-    @OnClick(R.id.btn_5)
-    public void onLivro5 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_6)
-    public void onLivro6 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_7)
-    public void onLivro7 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_8)
-    public void onLivro8 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_9)
-    public void onLivro9 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_10)
-    public void onLivro10 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
-    @OnClick(R.id.btn_11)
-    public void onLivro11 () {
-        startActivity(new Intent(this, LivrosActivity.class));
-    }
-
 
     @OnClick(R.id.btn_voltar)
     public void onBack () {
