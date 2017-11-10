@@ -26,5 +26,6 @@ public class AberturaActivity extends AppCompatActivity {
     private void iniciarMenu () {
         //Inicia tela de menu principal
         startActivity(new Intent(AberturaActivity.this, MenuInicialActivity.class));
+        finish();
     }
 }

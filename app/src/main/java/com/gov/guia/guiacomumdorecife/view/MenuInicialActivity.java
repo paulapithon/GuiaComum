@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.gov.guia.guiacomumdorecife.R;
+import com.gov.guia.guiacomumdorecife.view.guia.MapaActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

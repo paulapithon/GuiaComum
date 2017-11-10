@@ -2,4 +2,6 @@
     <string name="app_name">Guia Comum Do Recife</string>
     <string name="nome_cabecalho">GUIA COMUM DO RECIFE</string>
 
+    <string name="imagens_cabecalho">%1$d/%2$d</string>
+
 </resources>

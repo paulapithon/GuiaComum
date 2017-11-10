@@ -25,7 +25,7 @@
         app:srcCompat="@color/rosa_escuro" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/cabecalho_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nome_cabecalho"

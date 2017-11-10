@@ -3,11 +3,11 @@
     package="com.gov.guia.guiacomumdorecife">
 
     <application
+        android:name=".GuiaComumApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".GuiaComumApplication"
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.AberturaActivity"
@@ -19,8 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.MenuInicialActivity" />
-        <activity android:name=".view.MapaActivity" />
-        <activity android:name=".view.LivrosActivity"></activity>
+        <activity android:name=".view.guia.MapaActivity" />
+        <activity android:name=".view.guia.LivrosActivity" />
+        <activity android:name=".view.guia.ConteudoActivity" />
+        <activity android:name=".view.guia.GaleriaActivity"></activity>
     </application>
 
 </manifest>
