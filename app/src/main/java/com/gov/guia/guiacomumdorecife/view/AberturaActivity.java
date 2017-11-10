@@ -1,9 +1,11 @@
-package com.gov.guia.guiacomumdorecife;
+package com.gov.guia.guiacomumdorecife.view;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.gov.guia.guiacomumdorecife.R;
 
 public class AberturaActivity extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class AberturaActivity extends AppCompatActivity {
             public void run() {
                 iniciarMenu();
             }
-        }, 2000);
+        }, 5000);
     }
 
     private void iniciarMenu () {

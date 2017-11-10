@@ -1,8 +1,10 @@
-package com.gov.guia.guiacomumdorecife;
+package com.gov.guia.guiacomumdorecife.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.gov.guia.guiacomumdorecife.R;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

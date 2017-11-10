@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rosa_claro"
-    tools:context="com.gov.guia.guiacomumdorecife.MenuInicialActivity">
+    tools:context="com.gov.guia.guiacomumdorecife.view.MenuInicialActivity">
 
     <ImageButton
         android:id="@+id/btn_guia"
