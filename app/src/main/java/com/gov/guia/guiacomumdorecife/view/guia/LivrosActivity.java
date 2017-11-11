@@ -34,7 +34,7 @@ public class LivrosActivity extends AppCompatActivity {
 
     private void setUI () {
 
-        BtnMapa mapa = GuiaComumApplication.getsBotoesMapa().get(getIntent().getStringExtra(Constants.DATABASE_MAPA_INDEX));
+        BtnMapa mapa = GuiaComumApplication.getsBotoesMapa().get(GuiaComumApplication.getsCurrentMap());
         mListaLivros.setAdapter(new LivrosAdapter(this, R.layout.item_livro, mapa.getLivros()));
 
         mNomeLivros.setText(mapa.getNome().toUpperCase());

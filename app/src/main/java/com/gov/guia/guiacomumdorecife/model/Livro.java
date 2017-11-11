@@ -12,7 +12,7 @@ public class Livro implements Serializable{
     private String nome;
     private ArrayList<String> imagens;
     private String resumo;
-    private String audio;
+    private String local;
 
     public Livro () {
         super();
@@ -30,7 +30,7 @@ public class Livro implements Serializable{
         return resumo;
     }
 
-    public String getAudio() {
-        return audio;
+    public String getLocal() {
+        return local;
     }
 }

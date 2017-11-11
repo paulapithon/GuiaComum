@@ -15,6 +15,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class GuiaComumApplication extends Application {
 
     private static HashMap<String, BtnMapa> sBotoesMapa;
+    private static String sCurrentMap;
 
     @Override
     public void onCreate() {
@@ -33,7 +34,11 @@ public class GuiaComumApplication extends Application {
         return sBotoesMapa;
     }
 
-    public static void addToHashMap (String index, BtnMapa mapa) {
-        sBotoesMapa.put(index, mapa);
+    public static String getsCurrentMap() {
+        return sCurrentMap;
+    }
+
+    public static void setsCurrentMap(String sCurrentMap) {
+        GuiaComumApplication.sCurrentMap = sCurrentMap;
     }
 }

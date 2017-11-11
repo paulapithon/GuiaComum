@@ -4,4 +4,10 @@
 
     <string name="imagens_cabecalho">%1$d/%2$d</string>
 
+    <string name="maps_pesquisa">geo:%1$s,%2$s?q=%3$s</string>
+    <string name="maps_split">, </string>
+
+    <string name="texto_enviar">Enviar para:</string>
+    <string name="conteudo_enviar">Baixe o aplicativo Guia Comum do Recife e conheça mais sobre %1$s!\n\nAcesse agora: https://goo.gl/DddN4Q</string>
+
 </resources>

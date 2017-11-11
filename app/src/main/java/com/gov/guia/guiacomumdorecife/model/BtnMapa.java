@@ -13,6 +13,7 @@ public class BtnMapa {
     private double x;
     private double y;
     private ArrayList<Livro> livros;
+    private String audio;
 
     public BtnMapa () {
         super();
@@ -36,5 +37,9 @@ public class BtnMapa {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getAudio() {
+        return audio;
     }
 }

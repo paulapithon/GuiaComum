@@ -85,13 +85,13 @@ public class MapaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //TODO adicionar esse código dentro do diálogo
                 Intent intent = new Intent(MapaActivity.this, LivrosActivity.class);
-                intent.putExtra(Constants.DATABASE_MAPA_INDEX, index);
+                GuiaComumApplication.setsCurrentMap(index);
                 startActivity(intent);
             }
         });
         mBotoesMapa.addView(mapaBtn);
         //Adiciona na lista da aplicação
-        GuiaComumApplication.addToHashMap(index, btn);
+        GuiaComumApplication.getsBotoesMapa().put(index, btn);
 
     }
 
