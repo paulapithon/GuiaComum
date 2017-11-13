@@ -2,11 +2,9 @@ package com.gov.guia.guiacomumdorecife;
 
 import android.app.Application;
 
-import com.gov.guia.guiacomumdorecife.model.BtnMapa;
+import com.gov.guia.guiacomumdorecife.model.Mapa;
 
 import java.util.HashMap;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by Paula Pithon on 09/11/2017.
@@ -14,7 +12,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class GuiaComumApplication extends Application {
 
-    private static HashMap<String, BtnMapa> sBotoesMapa;
+    private static HashMap<String, Mapa> sBotoesMapa;
     private static String sCurrentMap;
 
     @Override
@@ -23,14 +21,9 @@ public class GuiaComumApplication extends Application {
 
         sBotoesMapa = new HashMap<>();
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Constantia.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
     }
 
-    public static HashMap<String, BtnMapa> getsBotoesMapa() {
+    public static HashMap<String, Mapa> getsBotoesMapa() {
         return sBotoesMapa;
     }
 

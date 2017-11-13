@@ -28,6 +28,7 @@
         android:id="@+id/cabecalho_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:text="@string/nome_cabecalho"
         android:textColor="@color/azul_marinho"
         android:textSize="18sp"

@@ -1,6 +1,5 @@
 package com.gov.guia.guiacomumdorecife.view.guia;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -16,13 +15,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
-import com.gov.guia.guiacomumdorecife.model.BtnMapa;
+import com.gov.guia.guiacomumdorecife.model.Mapa;
 import com.gov.guia.guiacomumdorecife.util.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MapaActivity extends AppCompatActivity {
 
@@ -40,30 +38,28 @@ public class MapaActivity extends AppCompatActivity {
 
     private void setupDatabase() {
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        database.getReference().child(Constants.DATABASE_MAPA).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
+                .addChildEventListener(new ChildEventListener() {
+
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                BtnMapa btn = dataSnapshot.getValue(BtnMapa.class);
+                Mapa btn = dataSnapshot.getValue(Mapa.class);
                 criarBtnMapa(btn, dataSnapshot.getKey());
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) { }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
 
     }
 
-    private void criarBtnMapa (final BtnMapa btn, final String index) {
+    private void criarBtnMapa (final Mapa btn, final String index) {
 
         //TODO criar pasta com dimensões
         //Seta os parametros do layout
@@ -90,8 +86,11 @@ public class MapaActivity extends AppCompatActivity {
             }
         });
         mBotoesMapa.addView(mapaBtn);
+
         //Adiciona na lista da aplicação
-        GuiaComumApplication.getsBotoesMapa().put(index, btn);
+        if (!GuiaComumApplication.getsBotoesMapa().containsKey(index)) {
+            GuiaComumApplication.getsBotoesMapa().put(index, btn);
+        }
 
     }
 
@@ -100,8 +99,4 @@ public class MapaActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 }

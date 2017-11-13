@@ -10,4 +10,15 @@
     <string name="texto_enviar">Enviar para:</string>
     <string name="conteudo_enviar">Baixe o aplicativo Guia Comum do Recife e conheça mais sobre %1$s!\n\nAcesse agora: https://goo.gl/DddN4Q</string>
 
+    <string name="participe_titulo">PARTICIPE</string>
+    <string name="participe_resumo">Nos deixe uma mensagem com algo que você viu pela cidade do Recife.</string>
+    <string name="participe_nome">Nome</string>
+    <string name="participe_email">E-mail</string>
+    <string name="participe_descricao">Descrição</string>
+    <string name="participe_coordenadas">%1$f,%2$f</string>
+
+    <string name="termos_botao">Aceitar termos e condições de uso</string>
+    <string name="termos_titulo">TERMOS E CONDIÇÕES DE USO</string>
+    <string name="termos_conteudo">. . .</string>
+
 </resources>

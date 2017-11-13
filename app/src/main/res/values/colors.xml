@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="azul_marinho">#12096a</color>
-    <color name="rosa_claro">#e6969c</color>
+
+    <color name="azul_marinho">#161780</color>
+    <color name="rosa_claro">#f4adb1</color>
     <color name="rosa_escuro">#c2555c</color>
+
 </resources>

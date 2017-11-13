@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
-import com.gov.guia.guiacomumdorecife.view.guia.LivrosActivity;
 
 import java.util.List;
 
