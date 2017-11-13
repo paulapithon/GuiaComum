@@ -117,14 +117,14 @@ public class ParticiparActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(final int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+    protected void onActivityResult(final int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
         if(resultCode == RESULT_OK && (requestCode == SELECIONAR_FOTO || requestCode == SELECIONAR_AUDIO)) {
             try {
                 final boolean isPhoto = requestCode == SELECIONAR_FOTO;
-                InputStream stream = getContentResolver().openInputStream(imageReturnedIntent.getData());
+                InputStream stream = getContentResolver().openInputStream(intent.getData());
 
-                StorageReference  referencia = FirebaseStorage.getInstance().getReference().child(
+                StorageReference referencia = FirebaseStorage.getInstance().getReference().child(
                         (isPhoto ? Constants.DATABASE_IMAGENS_SUGESTAO : Constants.DATABASE_AUDIOS_SUGESTAO) +
                         System.currentTimeMillis() +
                         (isPhoto ? Constants.TIPO_FOTO : Constants.TIPO_AUDIO)
