@@ -26,13 +26,21 @@
             <RelativeLayout
                 android:id="@+id/btns_mapa"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipToPadding="false">
 
                 <ImageView
                     android:id="@+id/image_mapa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/mapa" />
+
+                <include
+                    android:visibility="gone"
+                    android:id="@+id/mapa_popup"
+                    layout="@layout/dialog_mapa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
 
             </RelativeLayout>
