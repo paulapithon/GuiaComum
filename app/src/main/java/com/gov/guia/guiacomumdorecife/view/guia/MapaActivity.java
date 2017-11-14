@@ -131,9 +131,9 @@ public class MapaActivity extends AppCompatActivity {
         double height = btn.getY();
         int size = (int) Math.ceil(70 * logicalDensity);
         if (isDialog) {
-            width -= 0.06;
+            width -= 0.065;
             height -= 0.15;
-            size = (int) Math.ceil(200 * logicalDensity);
+            size = (int) Math.ceil(210 * logicalDensity);
         }
 
         RelativeLayout.LayoutParams parametros = new RelativeLayout.LayoutParams(size, size);
