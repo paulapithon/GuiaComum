@@ -141,7 +141,9 @@ public class MapaActivity extends AppCompatActivity {
         int size = (int) Math.ceil(70 * logicalDensity);
         if (isDialog) {
             width -= 0.065;
-            height -= 0.15;
+            if (height > 0.5) { height -= 0.15; }
+            else { height += 0.07; }
+
             size = (int) Math.ceil(210 * logicalDensity);
         }
 
