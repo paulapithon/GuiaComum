@@ -13,6 +13,8 @@ public class Constants {
 
     public static String DATABASE_LIVRO_INDEX = "livro_index";
     public static String DATABASE_IMAGENS_INDEX = "imagens_index";
+    public static String DATABASE_LIVRO_TEXTO = "texto_livro";
+    public static String DATABASE_LIVRO_TITULO = "titulo_livro";
 
     public static String TIPO_FOTO = ".jpg";
     public static String TIPO_AUDIO = ".mp3";

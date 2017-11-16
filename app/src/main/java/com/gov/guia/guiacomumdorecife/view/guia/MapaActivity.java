@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,6 +39,10 @@ public class MapaActivity extends AppCompatActivity {
     ImageButton mBtnDialogo;
     @BindView(R.id.elevation_dialog)
     View mElevation;
+    @BindView(R.id.loading_bar)
+    ProgressBar mLoadingBar;
+    @BindView(R.id.loading_image)
+    ImageView mLoadingImage;
 
     private Mapa currentBtn;
 
@@ -59,6 +65,9 @@ public class MapaActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Mapa btn = dataSnapshot.getValue(Mapa.class);
                 criarBtnMapa(btn, dataSnapshot.getKey());
+
+                mLoadingBar.setVisibility(View.GONE);
+                mLoadingImage.setVisibility(View.GONE);
             }
 
             @Override
@@ -148,6 +157,10 @@ public class MapaActivity extends AppCompatActivity {
     }
 
     private void setUI () {
+
+        mLoadingBar.setVisibility(View.VISIBLE);
+        mLoadingImage.setVisibility(View.VISIBLE);
+
         mMapaPopup.bringToFront();
 
         //Eleva dialog apenas se for uma versão suportada
@@ -155,6 +168,7 @@ public class MapaActivity extends AppCompatActivity {
             mElevation.setElevation(5f);
             mElevation.setTranslationZ(5f);
         }
+
     }
 
     @OnClick(R.id.btn_voltar)

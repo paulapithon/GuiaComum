@@ -13,7 +13,6 @@ public class Mapa {
     private double x;
     private double y;
     private ArrayList<Livro> livros;
-    private String audio;
 
     public Mapa() {
         super();
@@ -39,7 +38,4 @@ public class Mapa {
         return nome;
     }
 
-    public String getAudio() {
-        return audio;
-    }
 }

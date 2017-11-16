@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
 import com.gov.guia.guiacomumdorecife.util.PlayAudioManager;
+import com.gov.guia.guiacomumdorecife.view.participe.TermosActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -41,9 +43,10 @@ public class ConteudoActivity extends AppCompatActivity {
     ImageButton mAudioBtn;
     @BindView(R.id.btn_local)
     ImageButton mLocalBtn;
+    @BindView(R.id.mais_btn)
+    Button mMaisBtn;
 
     private Livro livro;
-    private String audio;
     private boolean playing;
 
     @Override
@@ -58,13 +61,14 @@ public class ConteudoActivity extends AppCompatActivity {
     private void setUI () {
 
         livro = (Livro) getIntent().getSerializableExtra(Constants.DATABASE_LIVRO_INDEX);
-        audio = GuiaComumApplication.getsBotoesMapa().get(GuiaComumApplication.getsCurrentMap()).getAudio();
 
         mTitulo.setText(livro.getNome().toUpperCase());
 
         //Reajustar layout baseado no resumo e imagem
         if (livro.getResumo() != null) { mResumo.setText(livro.getResumo()); }
         else { mResumo.setVisibility(View.GONE); }
+
+        if(livro.getTexto() == null) { mMaisBtn.setVisibility(View.GONE); }
 
         if (livro.getImagens() != null) {
             Glide.with(this).load(livro.getImagens().get(0)).into(mImagem);
@@ -73,18 +77,26 @@ public class ConteudoActivity extends AppCompatActivity {
         else { mImagem.setVisibility(View.GONE); }
 
         //Setar botões de interação
-        if (audio == null) {  mAudioBtn.setVisibility(View.GONE); }
+        if (livro.getAudio() == null) {  mAudioBtn.setVisibility(View.GONE); }
         if (livro.getLocal() == null) { mLocalBtn.setVisibility(View.GONE); }
 
     }
 
     private void setupPlayer (boolean play) {
         try {
-            if (play) { PlayAudioManager.playAudio(this, audio); }
+            if (play) { PlayAudioManager.playAudio(this, livro.getAudio()); }
             else { PlayAudioManager.killMediaPlayer(); }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.mais_btn)
+    public void onMais () {
+        Intent intent = new Intent(this, TermosActivity.class);
+        intent.putExtra(Constants.DATABASE_LIVRO_TEXTO, livro.getTexto());
+        intent.putExtra(Constants.DATABASE_LIVRO_TITULO, livro.getNome());
+        startActivity(intent);
     }
 
     @OnClick(R.id.btn_audio)

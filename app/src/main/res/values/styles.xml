@@ -12,7 +12,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/rosa_claro</item>
         <item name="colorPrimaryDark">@color/rosa_claro</item>
-        <item name="colorAccent">@color/rosa_claro</item>
+        <item name="colorAccent">@color/rosa_escuro</item>
         <!--<item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>-->
     </style>
 

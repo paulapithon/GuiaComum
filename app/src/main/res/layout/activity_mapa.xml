@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,20 +8,17 @@
     tools:context="com.gov.guia.guiacomumdorecife.view.guia.MapaActivity"
     android:background="@color/rosa_claro">
 
-    <include
-        layout="@layout/cabecalho"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <ScrollView
+        android:id="@+id/mapa_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/mapa_horizontal">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include6">
 
         <HorizontalScrollView
+            android:id="@+id/mapa_vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/mapa_vertical">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/btns_mapa"
@@ -36,22 +33,54 @@
                     app:srcCompat="@drawable/mapa" />
 
                 <include
-                    android:visibility="gone"
                     android:id="@+id/mapa_popup"
                     layout="@layout/dialog_mapa"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
-
 
 
         </HorizontalScrollView>
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/loading_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/mapa_popup"
+        android:layout_toEndOf="@+id/mapa_popup"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include6"
+        app:srcCompat="@color/rosa_claro" />
+
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mapa_popup"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/mapa_popup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/loading_image" />
+
+    <include
+        android:id="@+id/include6"
+        layout="@layout/cabecalho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

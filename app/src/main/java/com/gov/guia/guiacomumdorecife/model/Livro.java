@@ -12,7 +12,9 @@ public class Livro implements Serializable{
     private String nome;
     private ArrayList<String> imagens;
     private String resumo;
+    private String texto;
     private String local;
+    private String audio;
 
     public Livro () {
         super();
@@ -33,4 +35,13 @@ public class Livro implements Serializable{
     public String getLocal() {
         return local;
     }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
 }

@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -34,6 +36,10 @@ public class GaleriaActivity extends AppCompatActivity {
     ImageButton mVoltarBtn;
     @BindView(R.id.btn_passar_imagem)
     ImageButton mPassarImagem;
+    @BindView(R.id.carregando_barra)
+    ProgressBar mCarregandoBarra;
+    @BindView(R.id.carregando_image)
+    ImageView mCarregandoImagem;
 
     private ArrayList<Drawable> imagens;
     private int currentIndex;
@@ -63,6 +69,9 @@ public class GaleriaActivity extends AppCompatActivity {
             });
         }
 
+        mCarregandoBarra.setVisibility(View.VISIBLE);
+        mCarregandoImagem.setVisibility(View.VISIBLE);
+
     }
 
     private void setUI () {
@@ -70,6 +79,9 @@ public class GaleriaActivity extends AppCompatActivity {
         currentIndex = INITIAL_INDEX;
         setImagemAtual(currentIndex);
         mFoto.setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
+
+        mCarregandoBarra.setVisibility(View.GONE);
+        mCarregandoImagem.setVisibility(View.GONE);
     }
 
     private void setImagemAtual(int index) {

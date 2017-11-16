@@ -1,7 +1,8 @@
 package com.gov.guia.guiacomumdorecife.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -35,8 +36,16 @@ public class MenuInicialActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_camera)
     public void onCamera () {
-        //TODO adicionar filtro
-        startActivity(new Intent(MediaStore.ACTION_IMAGE_CAPTURE));
+        //Cria diálogo para nova feature em breve
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.conteudo_dialogo);
+        builder.setTitle(R.string.titulo_dialogo);
+        builder.setPositiveButton(R.string.ok_dialog, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
 }
