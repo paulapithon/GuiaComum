@@ -13,8 +13,8 @@
 
     <string name="participe_titulo">PARTICIPE</string>
     <string name="participe_resumo">Nos deixe uma mensagem com algo que você viu pela cidade do Recife.</string>
-    <string name="participe_nome">Nome</string>
-    <string name="participe_email">E-mail</string>
+    <string name="participe_nome">Nome*</string>
+    <string name="participe_email">E-mail*</string>
     <string name="participe_descricao">Descrição</string>
     <string name="participe_coordenadas">%1$f,%2$f</string>
 
@@ -30,6 +30,6 @@
     <string name="conteudo_internet">É necessário conexão para visualizar essa página.</string>
     <string name="titulo_internet">Não conectado à internet!</string>
 
-
+    <string name="envio_participe">Formulário enviado com sucesso!</string>
 
 </resources>

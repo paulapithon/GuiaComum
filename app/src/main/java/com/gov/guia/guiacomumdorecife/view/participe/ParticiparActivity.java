@@ -1,11 +1,14 @@
 package com.gov.guia.guiacomumdorecife.view.participe;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,6 +27,7 @@ import com.google.firebase.storage.UploadTask;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Sugestao;
 import com.gov.guia.guiacomumdorecife.util.Constants;
+import com.gov.guia.guiacomumdorecife.util.ParticiparService;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -31,11 +36,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 public class ParticiparActivity extends AppCompatActivity {
 
     final private int SELECIONAR_FOTO = 123;
     final private int SELECIONAR_AUDIO = 321;
     final private int SELECIONAR_LOCAL = 444;
+    final private int AGUARDAR_PERMISSAO = 554;
 
     @BindView(R.id.edit_nome)
     EditText mEditNome;
@@ -45,10 +53,16 @@ public class ParticiparActivity extends AppCompatActivity {
     EditText mEditDescricao;
     @BindView(R.id.termos_aceitar)
     CheckBox mCheckBox;
+    @BindView(R.id.btn_local_atual)
+    ImageButton mLocalAtualBtn;
+    @BindView(R.id.btn_gravar_audio)
+    ImageButton mGravarAudioBtn;
+    @BindView(R.id.btn_tirar_foto)
+    ImageButton mTirarFotoBtn;
 
-    String imageUrl;
-    String audioUrl;
-    String localCoordenadas;
+    private Uri imageUri;
+    private Uri audioUri;
+    private boolean hasLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,48 +73,7 @@ public class ParticiparActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_local_atual)
     public void onLocalAtual() {
-
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this, new String[]{
-                            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                            android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    SELECIONAR_LOCAL);
-
-        } else {
-            getLocalizacaoAtual();
-        }
-
-    }
-
-    @SuppressLint("MissingPermission")
-    private void getLocalizacaoAtual() {
-
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                0,
-                0,
-                new LocationListener() {
-
-                    @Override
-                    public void onLocationChanged(final Location location) {
-                        localCoordenadas = getResources().getString(
-                                R.string.participe_coordenadas,
-                                location.getLatitude(),
-                                location.getLongitude()
-                        );
-                    }
-
-                    @Override
-                    public void onStatusChanged(String s, int i, Bundle bundle) { }
-                    @Override
-                    public void onProviderEnabled(String s) { }
-                    @Override
-                    public void onProviderDisabled(String s) { }
-                });
+        pedirPermissao(true);
     }
 
     @OnClick(R.id.btn_tirar_foto)
@@ -116,60 +89,88 @@ public class ParticiparActivity extends AppCompatActivity {
         startActivityForResult(intent, SELECIONAR_AUDIO);
     }
 
+    private void pedirPermissao (boolean isLocal) {
+        if (isLocal) {
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this, new String[]{
+                                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                                android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        SELECIONAR_LOCAL);
+
+            } else {
+                hasLocation = true;
+                mLocalAtualBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
+            }
+        } else {
+            if ((imageUri != null || audioUri != null) &&
+                    ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        AGUARDAR_PERMISSAO
+                );
+            } else {
+                salvarArquivos();
+            }
+        }
+    }
+
     @Override
     protected void onActivityResult(final int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
-        if(resultCode == RESULT_OK && (requestCode == SELECIONAR_FOTO || requestCode == SELECIONAR_AUDIO)) {
-            try {
-                final boolean isPhoto = requestCode == SELECIONAR_FOTO;
-                InputStream stream = getContentResolver().openInputStream(intent.getData());
-
-                StorageReference referencia = FirebaseStorage.getInstance().getReference().child(
-                        (isPhoto ? Constants.DATABASE_IMAGENS_SUGESTAO : Constants.DATABASE_AUDIOS_SUGESTAO) +
-                        System.currentTimeMillis() +
-                        (isPhoto ? Constants.TIPO_FOTO : Constants.TIPO_AUDIO)
-                );
-
-                UploadTask uploadTask = referencia.putStream(stream);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        if (isPhoto) { imageUrl = taskSnapshot.getDownloadUrl().toString(); }
-                        else { audioUrl = taskSnapshot.getDownloadUrl().toString(); }
-                    }
-                });
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        if(resultCode == RESULT_OK) {
+            if (requestCode == SELECIONAR_FOTO) {
+                imageUri = intent.getData();
+                mTirarFotoBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
+            } else if (requestCode == SELECIONAR_AUDIO) {
+                audioUri = intent.getData();
+                mGravarAudioBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
             }
-
-        } else if (resultCode == RESULT_OK && requestCode == SELECIONAR_LOCAL) {
-            getLocalizacaoAtual();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) { return; }
+        }
+
+        if (requestCode == SELECIONAR_LOCAL) {
+            mLocalAtualBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
+        }
+        else if (requestCode == AGUARDAR_PERMISSAO) { salvarArquivos(); }
+
+    }
+
+    private void salvarArquivos() {
+        if (mCheckBox.isChecked() &&
+                !mEditNome.getText().toString().equals("") &&
+                !mEditEmail.getText().toString().equals("")) {
+
+            Intent intent = new Intent(this, ParticiparService.class);
+
+            Bundle args = new Bundle();
+            args.putString(Constants.SERVICO_NOME, mEditNome.getText().toString());
+            args.putString(Constants.SERVICO_EMAIL, mEditEmail.getText().toString());
+            if (!mEditDescricao.getText().toString().equals("")) {
+                args.putString(Constants.SERVICO_DESCRICAO, mEditDescricao.getText().toString());
+            }
+            if (audioUri!= null) { args.putString(Constants.SERVICO_AUDIO, audioUri.toString()); }
+            if (audioUri != null) { args.putString(Constants.SERVICO_IMAGEM, imageUri.toString()); }
+            args.putBoolean(Constants.SERVICO_LOCALIZACAO, hasLocation);
+
+            intent.putExtra(Constants.SERVICO_BUNDLE, args);
+            startService(intent);
+        }
+        finish();
     }
 
     @OnClick(R.id.btn_compartilhar)
     public void onAceitar () {
-        saveDatabase();
-        finish();
-    }
-
-    private void saveDatabase () {
-        if (mCheckBox.isChecked()) {
-            FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_SUGESTAO).push().setValue(new Sugestao(
-                    mEditNome.getText().toString(),
-                    mEditEmail.getText().toString(),
-                    mEditDescricao.getText().toString(),
-                    imageUrl,
-                    audioUrl,
-                    localCoordenadas
-            ));
-        }
+        pedirPermissao(false);
     }
 
     @OnClick(R.id.termos_ver)

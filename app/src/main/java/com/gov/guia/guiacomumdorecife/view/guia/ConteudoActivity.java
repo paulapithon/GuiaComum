@@ -84,8 +84,13 @@ public class ConteudoActivity extends AppCompatActivity {
 
     private void setupPlayer (boolean play) {
         try {
-            if (play) { PlayAudioManager.playAudio(this, livro.getAudio()); }
-            else { PlayAudioManager.killMediaPlayer(); }
+            if (play) {
+                PlayAudioManager.playAudio(this, livro.getAudio());
+                mAudioBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
+            } else {
+                PlayAudioManager.killMediaPlayer();
+                mAudioBtn.clearColorFilter();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

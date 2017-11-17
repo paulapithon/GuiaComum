@@ -19,4 +19,12 @@ public class Constants {
     public static String TIPO_FOTO = ".jpg";
     public static String TIPO_AUDIO = ".mp3";
 
+    public static String SERVICO_NOME = "nome_servico";
+    public static String SERVICO_EMAIL = "email_servico";
+    public static String SERVICO_DESCRICAO = "descricao_servico";
+    public static String SERVICO_IMAGEM = "imagem_servico";
+    public static String SERVICO_AUDIO = "audio_servico";
+    public static String SERVICO_LOCALIZACAO = "localizacao_servico";
+    public static String SERVICO_BUNDLE = "bundle_servico";
+
 }
