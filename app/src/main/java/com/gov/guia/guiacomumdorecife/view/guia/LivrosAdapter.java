@@ -2,6 +2,7 @@ package com.gov.guia.guiacomumdorecife.view.guia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,17 +52,39 @@ public class LivrosAdapter extends ArrayAdapter<Livro> {
             ButterKnife.bind(this, convertView);
         }
 
-        mTituloLivro.setText(livros.get(position).getNome().toUpperCase());
-        mBtnLivro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(contexto, ConteudoActivity.class);
-                intent.putExtra(Constants.DATABASE_LIVRO_INDEX, livros.get(position));
-                contexto.startActivity(intent);
-            }
-        });
+        if (livros.get(position).getNome() != null) {
+            mTituloLivro.setText(livros.get(position).getNome().toUpperCase());
+            mBtnLivro.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(contexto, ConteudoActivity.class);
+                    intent.putExtra(Constants.DATABASE_LIVRO_INDEX, livros.get(position));
+                    contexto.startActivity(intent);
+                }
+            });
+            getImagemAleatoria(false);
+        } else {
+            getImagemAleatoria(true);
+        }
 
         return convertView;
+    }
+
+    private void getImagemAleatoria (boolean isEnfeite) {
+
+        TypedArray imgs;
+        if (isEnfeite) {
+            imgs = contexto.getResources().obtainTypedArray(R.array.livros_enfeites);
+        } else {
+            imgs = contexto.getResources().obtainTypedArray(R.array.livros_escritos);
+        }
+
+        Random random = new Random();
+        //Gerar asset de livro aleatorio baseado em array de imagens
+        mBtnLivro.setImageResource(imgs.getResourceId(random.nextInt(imgs.length()), 0));
+        if(random.nextBoolean()) { mBtnLivro.setRotationY(180); }
+        imgs.recycle();
+
     }
 
 }

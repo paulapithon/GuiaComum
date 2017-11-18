@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="livros_escritos">
+        <item>@drawable/livro_0</item>
+        <item>@drawable/livro_1</item>
+        <item>@drawable/livro_2</item>
+        <item>@drawable/livro_3</item>
+    </array>
+
+    <array name="livros_enfeites">
+        <item>@drawable/enfeite_0</item>
+        <item>@drawable/enfeite_1</item>
+        <item>@drawable/enfeite_2</item>
+        <item>@drawable/enfeite_3</item>
+        <item>@drawable/enfeite_4</item>
+        <item>@drawable/enfeite_5</item>
+    </array>
+
+</resources>

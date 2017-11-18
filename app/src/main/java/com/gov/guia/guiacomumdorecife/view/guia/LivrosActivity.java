@@ -7,7 +7,11 @@ import android.widget.TextView;
 
 import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
+import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.model.Mapa;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +23,8 @@ public class LivrosActivity extends AppCompatActivity {
     ListView mListaLivros;
     @BindView(R.id.nome_livros)
     TextView mNomeLivros;
+
+    private ArrayList<Livro> livros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,18 @@ public class LivrosActivity extends AppCompatActivity {
     private void setUI () {
 
         Mapa mapa = GuiaComumApplication.getsBotoesMapa().get(GuiaComumApplication.getsCurrentMap());
-        mListaLivros.setAdapter(new LivrosAdapter(this, R.layout.item_livro, mapa.getLivros()));
+
+        livros = new ArrayList<>();
+        Random random = new Random();
+        for (Livro livro : mapa.getLivros()) {
+            //Menor chance de ter um livro no inicio
+            if (random.nextBoolean()) { livros.add(new Livro()); }
+            livros.add(livro);
+            //Chances iguais de ter um livro depois
+            if (random.nextBoolean()) { livros.add(new Livro()); }
+        }
+
+        mListaLivros.setAdapter(new LivrosAdapter(this, R.layout.item_livro, livros));
 
         mNomeLivros.setText(mapa.getNome().toUpperCase());
 
