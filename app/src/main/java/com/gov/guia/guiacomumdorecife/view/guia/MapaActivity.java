@@ -52,8 +52,28 @@ public class MapaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mapa);
         ButterKnife.bind(this);
 
-        setupDatabase();
         setUI();
+    }
+
+    private void setUI () {
+
+        mLoadingBar.setVisibility(View.VISIBLE);
+        mLoadingImage.setVisibility(View.VISIBLE);
+
+        mMapaPopup.bringToFront();
+
+        //Eleva dialog apenas se for uma versão suportada
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mElevation.setElevation(5f);
+            mElevation.setTranslationZ(5f);
+        }
+
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        setupDatabase();
     }
 
     private void setupDatabase() {
@@ -61,24 +81,24 @@ public class MapaActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
                 .addChildEventListener(new ChildEventListener() {
 
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Mapa btn = dataSnapshot.getValue(Mapa.class);
-                criarBtnMapa(btn, dataSnapshot.getKey());
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Mapa btn = dataSnapshot.getValue(Mapa.class);
+                        criarBtnMapa(btn, dataSnapshot.getKey());
 
-                mLoadingBar.setVisibility(View.GONE);
-                mLoadingImage.setVisibility(View.GONE);
-            }
+                        mLoadingBar.setVisibility(View.GONE);
+                        mLoadingImage.setVisibility(View.GONE);
+                    }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) { }
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) { }
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) { }
+                });
 
     }
 
@@ -155,21 +175,6 @@ public class MapaActivity extends AppCompatActivity {
                 0
         );
         return parametros;
-
-    }
-
-    private void setUI () {
-
-        mLoadingBar.setVisibility(View.VISIBLE);
-        mLoadingImage.setVisibility(View.VISIBLE);
-
-        mMapaPopup.bringToFront();
-
-        //Eleva dialog apenas se for uma versão suportada
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mElevation.setElevation(5f);
-            mElevation.setTranslationZ(5f);
-        }
 
     }
 
