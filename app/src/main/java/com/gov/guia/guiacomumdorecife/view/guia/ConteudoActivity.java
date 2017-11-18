@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -45,6 +48,8 @@ public class ConteudoActivity extends AppCompatActivity {
     ImageButton mLocalBtn;
     @BindView(R.id.mais_btn)
     Button mMaisBtn;
+    @BindView(R.id.progresso_barra)
+    ProgressBar mProgresso;
 
     private Livro livro;
     private boolean playing;
@@ -71,10 +76,17 @@ public class ConteudoActivity extends AppCompatActivity {
         if(livro.getTexto() == null) { mMaisBtn.setVisibility(View.GONE); }
 
         if (livro.getImagens() != null) {
-            Glide.with(this).load(livro.getImagens().get(0)).into(mImagem);
-            mImagem.setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
+            Glide.with(this).load(livro.getImagens().get(0)).into(new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                    mImagem.setImageDrawable(resource);
+                    mImagem.setColorFilter(Color.BLUE, PorterDuff.Mode.LIGHTEN);
+                    mProgresso.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            mImagem.setVisibility(View.GONE);
         }
-        else { mImagem.setVisibility(View.GONE); }
 
         //Setar botões de interação
         if (livro.getAudio() == null) {  mAudioBtn.setVisibility(View.GONE); }
