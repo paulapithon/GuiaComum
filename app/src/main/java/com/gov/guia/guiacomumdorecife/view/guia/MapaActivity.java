@@ -47,6 +47,7 @@ public class MapaActivity extends AppCompatActivity {
     ImageView mLoadingImage;
 
     private Mapa currentBtn;
+    private ChildEventListener eventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,27 +83,29 @@ public class MapaActivity extends AppCompatActivity {
 
     private void setupDatabase() {
 
+        eventListener = new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Mapa btn = dataSnapshot.getValue(Mapa.class);
+                criarBtnMapa(btn, dataSnapshot.getKey());
+
+                mLoadingBar.setVisibility(View.GONE);
+                mLoadingImage.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) { }
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        };
+
         FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
-                .addChildEventListener(new ChildEventListener() {
-
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Mapa btn = dataSnapshot.getValue(Mapa.class);
-                        criarBtnMapa(btn, dataSnapshot.getKey());
-
-                        mLoadingBar.setVisibility(View.GONE);
-                        mLoadingImage.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {  }
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) { }
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) { }
-                });
+                .addChildEventListener(eventListener);
 
     }
 
@@ -201,4 +204,10 @@ public class MapaActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
+                .removeEventListener(eventListener);
+    }
 }
