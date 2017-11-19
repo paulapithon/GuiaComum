@@ -8,17 +8,12 @@
     tools:context="com.gov.guia.guiacomumdorecife.view.guia.MapaActivity"
     android:background="@color/rosa_claro">
 
-    <ScrollView
+    <com.gov.guia.guiacomumdorecife.util.TwoDScrollView
         android:id="@+id/mapa_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include6">
-
-        <HorizontalScrollView
-            android:id="@+id/mapa_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/btns_mapa"
@@ -42,10 +37,7 @@
 
             </RelativeLayout>
 
-
-        </HorizontalScrollView>
-
-    </ScrollView>
+    </com.gov.guia.guiacomumdorecife.util.TwoDScrollView>
 
     <ImageView
         android:id="@+id/loading_image"
