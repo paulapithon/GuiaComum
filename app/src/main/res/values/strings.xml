@@ -30,6 +30,6 @@
     <string name="conteudo_internet">É necessário conexão para visualizar essa página.</string>
     <string name="titulo_internet">Não conectado à internet!</string>
 
-    <string name="envio_participe">Formulário enviado com sucesso!</string>
+    <string name="envio_participe">Formulário enviado ao Guia Comum com sucesso!</string>
 
 </resources>

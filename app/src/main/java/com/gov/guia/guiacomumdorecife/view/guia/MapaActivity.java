@@ -1,5 +1,7 @@
 package com.gov.guia.guiacomumdorecife.view.guia;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -61,6 +63,8 @@ public class MapaActivity extends AppCompatActivity {
         mLoadingImage.setVisibility(View.VISIBLE);
 
         mMapaPopup.bringToFront();
+        mMapaPopup.setAlpha(0f);
+        mMapaPopup.setVisibility(View.GONE);
 
         //Eleva dialog apenas se for uma versão suportada
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -129,11 +133,25 @@ public class MapaActivity extends AppCompatActivity {
 
         //Verificar se é botão atual para sumir com dialog
         if (btn.equals(currentBtn)) {
-            mMapaPopup.setVisibility(View.GONE);
+            mMapaPopup.animate().alpha(0f).setDuration(200).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    mMapaPopup.setVisibility(View.GONE);
+                }
+            });
             currentBtn = null;
         } else {
             mMapaPopup.setLayoutParams(getParametrosLayout(btn, true));
+            mMapaPopup.setAlpha(0f);
             mMapaPopup.setVisibility(View.VISIBLE);
+            mMapaPopup.animate().alpha(1f).setDuration(200).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    mMapaPopup.setVisibility(View.VISIBLE);
+                }
+            });
             currentBtn = btn;
         }
 
