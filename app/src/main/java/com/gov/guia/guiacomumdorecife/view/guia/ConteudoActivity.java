@@ -86,6 +86,7 @@ public class ConteudoActivity extends AppCompatActivity {
             });
         } else {
             mImagem.setVisibility(View.GONE);
+            mProgresso.setVisibility(View.GONE);
         }
 
         //Setar botões de interação

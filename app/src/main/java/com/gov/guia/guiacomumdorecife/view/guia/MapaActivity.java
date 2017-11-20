@@ -165,6 +165,13 @@ public class MapaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MapaActivity.this, LivrosActivity.class);
                 startActivity(intent);
+                mMapaPopup.animate().alpha(0f).setDuration(200).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mMapaPopup.setVisibility(View.GONE);
+                    }
+                });
             }
         });
 
