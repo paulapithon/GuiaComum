@@ -48,6 +48,7 @@ public class MapaActivity extends AppCompatActivity {
 
     private Mapa currentBtn;
     private ChildEventListener eventListener;
+    private boolean isLoaded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,8 @@ public class MapaActivity extends AppCompatActivity {
             mElevation.setTranslationZ(5f);
         }
 
+        isLoaded = true;
+
     }
 
     @Override
@@ -87,11 +90,13 @@ public class MapaActivity extends AppCompatActivity {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Mapa btn = dataSnapshot.getValue(Mapa.class);
-                criarBtnMapa(btn, dataSnapshot.getKey());
+                if (isLoaded) {
+                    Mapa btn = dataSnapshot.getValue(Mapa.class);
+                    criarBtnMapa(btn, dataSnapshot.getKey());
 
-                mLoadingBar.setVisibility(View.GONE);
-                mLoadingImage.setVisibility(View.GONE);
+                    mLoadingBar.setVisibility(View.GONE);
+                    mLoadingImage.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -214,7 +219,6 @@ public class MapaActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
-                .removeEventListener(eventListener);
+        isLoaded = false;
     }
 }
