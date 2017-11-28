@@ -9,7 +9,6 @@
     </array>
 
     <array name="livros_enfeites">
-        <item>@drawable/enfeite_0</item>
         <item>@drawable/enfeite_1</item>
         <item>@drawable/enfeite_2</item>
         <item>@drawable/enfeite_3</item>

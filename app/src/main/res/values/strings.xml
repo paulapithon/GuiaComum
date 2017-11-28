@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Guia Comum Do Recife</string>
+    <string name="app_name">Guia Comum</string>
     <string name="nome_cabecalho">GUIA COMUM DO RECIFE</string>
 
     <string name="imagens_cabecalho">%1$d/%2$d</string>
@@ -12,7 +12,7 @@
     <string name="ler_mais">VER MAIS</string>
 
     <string name="participe_titulo">PARTICIPE</string>
-    <string name="participe_resumo">Nos deixe uma mensagem com algo que você viu pela cidade do Recife.</string>
+    <string name="participe_resumo">Envie sua sugestão de outro  lugar ou situação interessante encontrada na cidade.</string>
     <string name="participe_nome">Nome*</string>
     <string name="participe_email">E-mail*</string>
     <string name="participe_descricao">Descrição</string>
@@ -20,7 +20,33 @@
 
     <string name="termos_botao">Aceitar termos e condições de uso</string>
     <string name="termos_titulo">TERMOS E CONDIÇÕES DE USO</string>
-    <string name="termos_conteudo">. . .</string>
+    <string name="termos_conteudo">O aplicativo Guia comum do Recife zela pela privacidade e proteção dos dados pessoais de seus visitantes, protegendo essas informações de uso impróprio e acesso não autorizado, mantendo assim uma relação de confiança e respeito construída junto a seu público neste projeto criativo e colaborativo.
+    \n\nA presente política dos Termos e Condições de Uso abrange o tratamento que o aplicativo Guia comum do Recife dá às informações fornecidas pelos usuários, coletadas diretamente via aplicativo e armazenadas em nossas bases de dados eletrônicos.
+    \n\nA entrada de dados pessoais do usuário no aplicativo Guia comum do Recife não constitui requisito para navegar pelo aplicativo, sendo facultativa. Porém, alguns ambientes estarão limitados sem este requisito.
+    \n\nRecebido formulário de participação devidamente preenchido, o usuário terá confirmação informada por e-mail cadastrado.
+    \n\nO usuário interessado em participar do projeto que decidir fornecer dados pessoais e demais conteúdos passíveis de publicação no aplicativo – textos, fotografias e áudios – declara conhecer e aceitar os Termos e Condições de Uso dessa política.
+    \n\nPara fins desta política, devem ser observadas as seguintes considerações:
+    \n\n1. Proteção e privacidade dos dados
+    \n1.1. As informações solicitadas aos usuários são as mínimas necessárias para o desenvolvimento da atualização de conteúdos do Guia comum do Recife e as informações pessoais usadas exclusivamente para a finalidade registro e identificação pela colaboração no projeto. Quando necessário, ficam armazenadas em nossa base de dados, em ambiente seguro.
+    \n\n1.2. A equipe do aplicativo Guia Comum do Recife envolvida nos processos de coleta e edição de dados fornecidos pelos usuários têm conhecimento dessa política e apenas o pessoal qualificado e autorizado tem permissão para acessar os dados coletados, sob pena de sofrer sanção disciplinar em caso de violação das normas previstas pela política.
+    \n\n1.3. A apresentação de informações só ocorrerá através de requisição do próprio visitante colaborador ou mediante ordem judicial. O aplicativo Guia comum do Recife se compromete a usar as informações dos usuários apenas para as finalidades as quais foram coletadas – a utilização de dados fornecidos para atualização de conteúdos do aplicativo e possível vinculação de conteúdos a materiais de divulgação do projeto –  reservando-nos o direito de destruí-las após sua utilização. O aplicativo Guia comum do Recife exige de suas empresas parceiras e prestadores de serviços a garantia de proteção e privacidade de dados assegurados em nossa política quando há necessidade de compartilhamento dos mesmos.
+    \n1.4. O aplicativo Guia comum do Recife e suas empresas parceiras e prestadores de serviços não armazena nem utiliza de nenhuma forma e sob nenhuma hipótese, os e-mails cadastrados no aplicativo para qualquer outro fim que não o envio das informações relacionadas ao projeto do aplicativo.
+    \n\n2. Seleção, uso e edição de dados
+    \n2.1. O ato de inscrição do formulário de participação implica a plena aceitação do presente Termo e Condições de Uso.
+    \n\n2.2. A equipe de coleta e edição de conteúdos fornecidos pelos usuários do aplicativo Guia comum do Recife é soberana quanto ao mérito das decisões e se reserva o direito de selecionar e editar os conteúdos fornecidos pelos usuários a serem publicados no aplicativo, podendo não publicar e descartar conteúdos julgados como não relacionados, inadequados ou inapropriados ao conceito do projeto.
+    \n\n2.3. Cabe a equipe de coleta e edição de conteúdos fornecidos pelos usuários do aplicativo Guia comum do Recife comunicar, via e-mail cadastrado, quando os conteúdos por eles fornecidos foram selecionados para inclusão no aplicativo. Nesse caso, será enviado informativos sobre a publicação dos conteúdos, e demais informações sobre o projeto, para o endereço registrado pelo usuário no ato de preenchimento do formulário de participação. O aplicativo Guia comum do Recife não se responsabiliza, em hipótese alguma, por problemas técnicos de e-mails ou provedores, ou no caso de fornecimento de endereço de e-mail incorreto.
+    \n\n3. Cessão de direto de uso de dados
+    \n3.1. Os usuários autorizam, no ato de inscrição no formulário de participação no aplicativo Guia comum do Recife, o uso, edição e publicação de dados por eles fornecidos: nome de identificação dos usuários, textos, fotografias e áudios fornecidos no formulário de inscrição.
+    \n\n3.2. Os usuários autorizam, no ato de inscrição no formulário de participação no aplicativo Guia comum do Recife, vinculação dos dados fornecidos no aplicativo bem como em materiais de divulgação a serem produzidos e vinculados em mídias diversas, tais como redes sociais, folders, folhetos, cartazes, jornais, vídeos.
+    \n\n3.3. A cessão de uso dos dados fornecidos pelo usuário não prevê nenhuma remuneração ao cedente.
+    \n\n4. Links Externos
+    \n4.1. O aplicativo poderá ter acesso a links para outros sites externos cujos conteúdos e políticas de privacidade não são de responsabilidade do aplicativo Guia comum do recife. Assim, recomendamos que, ao serem redirecionados para sites externos, os usuários consultem sempre as respectivas políticas de privacidade antes de fornecerem seus dados ou informações.
+    \n\n5. Alterações da nossa Política de Privacidade
+    \n5.1. Esta Política de Privacidade está sujeita a constante melhoria e aprimoramento. Assim, recomendamos sua leitura periódica.
+    \n\n5.2. O aplicativo Guia comum do Recife se reserva ao direito de modificar a qualquer momento, visando uma melhoria contínua, o presente Termo e Condições de Uso, observando a comunicação ampla e prévia desta alteração aos usuários do serviço.
+    \n\nEm caso de perguntas ou sugestões, por favor, enviar um e-mail para
+    appguiacomum@gmail.com
+    </string>
 
     <string name="ok_dialog">Beleza :)</string>
     <string name="conteudo_dialogo">Logo, logo, teremos um recuso novo muito massa pra você. Aguarde novidades.</string>

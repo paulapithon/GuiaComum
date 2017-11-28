@@ -62,15 +62,17 @@ public class LivrosAdapter extends ArrayAdapter<Livro> {
                     contexto.startActivity(intent);
                 }
             });
-            getImagemAleatoria(false);
+            getImagemAleatoria(false, position);
         } else {
-            getImagemAleatoria(true);
+            getImagemAleatoria(true, position);
         }
 
         return convertView;
     }
 
-    private void getImagemAleatoria (boolean isEnfeite) {
+    private void getImagemAleatoria (boolean isEnfeite, int position) {
+
+        Random random = new Random();
 
         TypedArray imgs;
         if (isEnfeite) {
@@ -79,9 +81,12 @@ public class LivrosAdapter extends ArrayAdapter<Livro> {
             imgs = contexto.getResources().obtainTypedArray(R.array.livros_escritos);
         }
 
-        Random random = new Random();
         //Gerar asset de livro aleatorio baseado em array de imagens
-        mBtnLivro.setImageResource(imgs.getResourceId(random.nextInt(imgs.length()), 0));
+        if (isEnfeite && position == 0 && random.nextBoolean()) {
+            mBtnLivro.setImageResource(R.drawable.enfeite_topo);
+        } else {
+            mBtnLivro.setImageResource(imgs.getResourceId(random.nextInt(imgs.length()), 0));
+        }
         if(random.nextBoolean()) { mBtnLivro.setRotationY(180); }
         imgs.recycle();
 
