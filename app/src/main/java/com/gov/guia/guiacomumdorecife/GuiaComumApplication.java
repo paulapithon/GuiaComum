@@ -34,4 +34,8 @@ public class GuiaComumApplication extends Application {
     public static void setsCurrentMap(String sCurrentMap) {
         GuiaComumApplication.sCurrentMap = sCurrentMap;
     }
+
+    public static Mapa mapaAtual () {
+        return sBotoesMapa.get(sCurrentMap);
+    }
 }

@@ -27,4 +27,7 @@ public class Constants {
     public static String SERVICO_LOCALIZACAO = "localizacao_servico";
     public static String SERVICO_BUNDLE = "bundle_servico";
 
+    public static String LIVRO_NAO_EXISTEM = "Lugares que não existem";
+    public static String LIVRO_MANUAL = "Manual";
+
 }

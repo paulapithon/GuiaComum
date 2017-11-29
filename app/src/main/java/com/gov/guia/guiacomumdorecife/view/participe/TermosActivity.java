@@ -33,7 +33,14 @@ public class TermosActivity extends AppCompatActivity {
         String titulo = getIntent().getStringExtra(Constants.DATABASE_LIVRO_TITULO);
 
         if(texto != null && titulo != null) {
-            mDescricao.setText(texto);
+            //Adicionar parágrafos aos textos
+            String[] descricao = texto.split("   ");
+            StringBuilder descricaoFinal = new StringBuilder();
+            for (int i = 0; i < descricao.length; i++) {
+                descricaoFinal.append(descricao[i]);
+                descricaoFinal.append("\n\n");
+            }
+            mDescricao.setText(descricaoFinal);
             mTitulo.setText(titulo.toUpperCase());
         } else {
             mDescricao.setText(getResources().getString(R.string.termos_conteudo));

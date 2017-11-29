@@ -84,6 +84,9 @@ public class ConteudoActivity extends AppCompatActivity {
                     mProgresso.setVisibility(View.GONE);
                 }
             });
+        } else if (GuiaComumApplication.mapaAtual().getNome().equals(Constants.LIVRO_NAO_EXISTEM)) {
+            mImagem.setBackground(getResources().getDrawable(R.drawable.image_background));
+            mProgresso.setVisibility(View.GONE);
         } else {
             mImagem.setVisibility(View.GONE);
             mProgresso.setVisibility(View.GONE);
@@ -137,7 +140,11 @@ public class ConteudoActivity extends AppCompatActivity {
 
         final Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.conteudo_enviar, livro.getNome()));
+
+        String nome;
+        if(livro.getNome().equals(Constants.LIVRO_MANUAL)) { nome = GuiaComumApplication.mapaAtual().getNome(); }
+        else { nome = livro.getNome(); }
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.conteudo_enviar, nome));
 
         if (livro.getImagens() != null) {
             //Tentar carregar url da imagem se existir
@@ -175,9 +182,12 @@ public class ConteudoActivity extends AppCompatActivity {
 
     @OnClick(R.id.imagem_conteudo)
     public void onConteudo () {
-        Intent intent = new Intent(this, GaleriaActivity.class);
-        intent.putExtra(Constants.DATABASE_IMAGENS_INDEX, livro.getImagens());
-        startActivity(intent);
+        if (!GuiaComumApplication.mapaAtual().getNome().equals(Constants.LIVRO_NAO_EXISTEM) ||
+                livro.getNome().equals(Constants.LIVRO_MANUAL)) {
+            Intent intent = new Intent(this, GaleriaActivity.class);
+            intent.putExtra(Constants.DATABASE_IMAGENS_INDEX, livro.getImagens());
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.btn_voltar)
