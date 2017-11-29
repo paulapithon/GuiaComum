@@ -4,11 +4,15 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -16,6 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +32,9 @@ import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Mapa;
 import com.gov.guia.guiacomumdorecife.util.Constants;
+import com.gov.guia.guiacomumdorecife.util.PopInterpolator;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,8 +58,8 @@ public class MapaActivity extends AppCompatActivity {
     ImageView mLoadingImage;
 
     private Mapa currentBtn;
-    private ChildEventListener eventListener;
     private boolean isLoaded;
+    private HashMap<Mapa, ImageButton> btnsAtuais;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +79,8 @@ public class MapaActivity extends AppCompatActivity {
         mMapaPopup.setAlpha(0f);
         mMapaPopup.setVisibility(View.GONE);
 
+        btnsAtuais = new HashMap<>();
+
         //Eleva dialog apenas se for uma versão suportada
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mElevation.setElevation(5f);
@@ -86,12 +99,20 @@ public class MapaActivity extends AppCompatActivity {
 
     private void setupDatabase() {
 
-        eventListener = new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
+                .addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (isLoaded) {
                     Mapa btn = dataSnapshot.getValue(Mapa.class);
+
+                    //Adiciona na lista da aplicação
+                    if (!GuiaComumApplication.getsBotoesMapa().containsKey(dataSnapshot.getKey())) {
+                        GuiaComumApplication.getsBotoesMapa().put(dataSnapshot.getKey(), btn);
+                    } else {
+                        btn = GuiaComumApplication.getsBotoesMapa().get(dataSnapshot.getKey());
+                    }
                     criarBtnMapa(btn, dataSnapshot.getKey());
 
                     mLoadingBar.setVisibility(View.GONE);
@@ -107,34 +128,53 @@ public class MapaActivity extends AppCompatActivity {
             public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
             @Override
             public void onCancelled(DatabaseError databaseError) { }
-        };
-
-        FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_MAPA)
-                .addChildEventListener(eventListener);
+        });
 
     }
 
     private void criarBtnMapa (final Mapa btn, final String index) {
 
-        //Cria botao programaticamente
-        ImageButton mapaBtn = new ImageButton(this);
-        Glide.with(this).load(btn.getIcone()).into(mapaBtn);
-        mapaBtn.setLayoutParams(getParametrosLayout(btn, false));
-        mapaBtn.setBackgroundColor(Color.TRANSPARENT);
-        mapaBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                criarDialogo(btn);
-                GuiaComumApplication.setsCurrentMap(index);
-            }
-        });
-        mBotoesMapa.addView(mapaBtn);
+        if (!btnsAtuais.containsKey(btn)) {
+            //Cria botao programaticamente
+            final ImageButton mapaBtn = new ImageButton(this);
+            Glide.with(this)
+                    .load(btn.getIcone())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
 
-        //Adiciona na lista da aplicação
-        if (!GuiaComumApplication.getsBotoesMapa().containsKey(index)) {
-            GuiaComumApplication.getsBotoesMapa().put(index, btn);
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            animarBtn(mapaBtn);
+                            return false;
+                        }
+                    })
+                    .into(mapaBtn);
+
+            mapaBtn.setLayoutParams(getParametrosLayout(btn, false));
+            mapaBtn.setBackgroundColor(Color.TRANSPARENT);
+            mapaBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    criarDialogo(btn);
+                    GuiaComumApplication.setsCurrentMap(index);
+                }
+            });
+            mBotoesMapa.addView(mapaBtn);
+            btnsAtuais.put(btn, mapaBtn);
         }
 
+    }
+
+    private void animarBtn (ImageButton mapaBtn) {
+        //Seta interpolator para botão quicar
+        Animation expandIn = AnimationUtils.loadAnimation(this, R.anim.pop_out);
+        PopInterpolator interpolator = new PopInterpolator(0.2, 20);
+        expandIn.setInterpolator(interpolator);
+        expandIn.setFillAfter(true);
+        mapaBtn.startAnimation(expandIn);
     }
 
     private void criarDialogo (Mapa btn) {
