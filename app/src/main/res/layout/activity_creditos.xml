@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/rosa_claro"
+    tools:context="com.gov.guia.guiacomumdorecife.view.CreditosActivity">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/cabecalho"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="\nQuem faz Guia Comum do Recife:\n"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="direção e produção executiva:"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Bruna Rafaella Ferrer "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="web design "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Flávio Guimarães"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="programação: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Paula Pithon"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="edição de conteúdo: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Inteligência Sensível (Bruna Rafaella Ferrer) "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="design digital: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Aurora Yett "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="ilustrações:  "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Tati Móes "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="assessoria de imprensa: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Goelas (Kalor Pacheco e Amauri Lins) "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="mídias digitais: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Munganga criativa"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="\nQuem fez o livro Guia Comum do Centro do Recife: \n"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="concepção e produção executiva: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Bruna Rafaella Ferrer "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="equipe de criação: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Bruna Rafaella Ferrer, Frederico Floeter, Tatiana Móes e Vitor Cesar "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="pesquisa de campo: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Bruna Rafaella Ferrer, Tatiana Móes e Chico Ludermir "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="edição de texto e reportagem: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Chico Ludermir e Schneider Carpeggiani "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="projeto gráfico: "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Frederico Floeter e Vitor Cesar"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="colaboradores:  "
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Textos:
+\nCristiano Borba (p 18; 52; 53)
+\nOriana Duarte (p 49)
+\nKate Saraiva (p 54; 55)
+\nAslan Cabral (p 66)
+\nRoberto Beltrão (p 96; 97)
+\nImagens:
+\nFeliciano dos Prazeres (p 6; 19)
+\nHeitor Dutra (p 10; 11; 90)
+\nNathalia Queiroz (p 50)
+\nPedro Bezerra (p 9)
+\nTatiana Móes (p 1; 80; 81; 86; 110-111)
+\nPintura:
+\nRoberto Ploeg (p 77)
+\nFotografias:
+\nChico Ludermir (p 4; 7; 12-15; 20; 22-26; 28-30; 32; 33; 36; 37; 43; 44; 47-49; 60; 61; 65; 67; 68; 70; 71; 74; 82-85; 87; 88; 91-94; 98; 100-104; 106-109)
+\nDanilo Galvão (p 16; 34; 35; 39; 40; 72; 73)
+\nLeila Figueiredo (p 62; 63)
+\nTatiana Móes (p 58)
+\nMúsica/partitura:
+\nÂngela Maria/ Marcelo Campello (p 78; 79)"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="\nRedes:\n"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Facebook:
+\nhttps://facebook.com/guiacomumdocentrodorecife
+\nInstagram:
+\n@guiacomumdorecife
+\nVimeo:
+\nhttps://vimeo.com/guiacomumdorecife
+\nTumblr:
+\nguiacomumdocentrodorecife.tumblr.com\n"
+                android:textAlignment="center"
+                android:textColor="@color/azul_marinho" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

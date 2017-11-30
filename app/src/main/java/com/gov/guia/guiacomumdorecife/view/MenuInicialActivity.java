@@ -76,4 +76,9 @@ public class MenuInicialActivity extends AppCompatActivity {
         return true;
     }
 
+    @OnClick(R.id.btn_creditos)
+    public void onCreditos () {
+        startActivity(new Intent(this, CreditosActivity.class));
+    }
+
 }
