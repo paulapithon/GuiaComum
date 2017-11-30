@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/azul_marinho</item>
         <item name="colorPrimaryDark">@color/azul_marinho</item>
         <item name="colorAccent">@color/azul_marinho</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <!--Tema da aplicação-->
