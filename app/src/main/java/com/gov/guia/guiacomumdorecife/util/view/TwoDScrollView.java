@@ -1,4 +1,4 @@
-package com.gov.guia.guiacomumdorecife.util;
+package com.gov.guia.guiacomumdorecife.util.view;
 
 /**
  * Created by paula on 19/11/17.

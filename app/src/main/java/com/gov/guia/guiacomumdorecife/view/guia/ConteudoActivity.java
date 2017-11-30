@@ -23,7 +23,7 @@ import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Livro;
 import com.gov.guia.guiacomumdorecife.util.Constants;
-import com.gov.guia.guiacomumdorecife.util.PlayAudioManager;
+import com.gov.guia.guiacomumdorecife.util.PlayAudio;
 import com.gov.guia.guiacomumdorecife.view.participe.TermosActivity;
 
 import java.io.File;
@@ -101,10 +101,10 @@ public class ConteudoActivity extends AppCompatActivity {
     private void setupPlayer (boolean play) {
         try {
             if (play) {
-                PlayAudioManager.playAudio(this, livro.getAudio());
+                PlayAudio.playAudio(this, livro.getAudio());
                 mAudioBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
             } else {
-                PlayAudioManager.killMediaPlayer();
+                PlayAudio.killMediaPlayer();
                 mAudioBtn.clearColorFilter();
             }
         } catch (Exception e) {
@@ -130,7 +130,12 @@ public class ConteudoActivity extends AppCompatActivity {
     public void onLocal () {
         //String dividia por vírgulas, estruturada no banco como "latitude, longitude, endereço"
         String[] local = livro.getLocal().split(getResources().getString(R.string.maps_split));
-        String uri = getResources().getString(R.string.maps_pesquisa, local[0], local[1], local[2]);
+        String uri;
+        if (local[2] == " " || local[2] == "  ") {
+            uri = getResources().getString(R.string.maps_pesquisa_sem_texto, local[0], local[1]);
+        } else {
+            uri = getResources().getString(R.string.maps_pesquisa, local[0], local[1], local[2]);
+        }
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
     }
@@ -142,20 +147,26 @@ public class ConteudoActivity extends AppCompatActivity {
         sendIntent.setAction(Intent.ACTION_SEND);
 
         String nome;
-        if(livro.getNome().equals(Constants.LIVRO_MANUAL)) { nome = GuiaComumApplication.mapaAtual().getNome(); }
+        if(livro.getNome().equals(Constants.LIVRO_MANUAL) || livro.getNome().equals(" ")) { nome = GuiaComumApplication.mapaAtual().getNome(); }
         else { nome = livro.getNome(); }
         sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.conteudo_enviar, nome));
 
         if (livro.getImagens() != null) {
+
             //Tentar carregar url da imagem se existir
             Glide.with(this).asBitmap().load(livro.getImagens().get(0)).into(new SimpleTarget<Bitmap>() {
                 @Override
-                public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
-                    sendIntent.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(resource));
-                    sendIntent.setType("image/*");
-                    sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                public void onResourceReady(final Bitmap resource, Transition<? super Bitmap> transition) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            sendIntent.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(resource));
+                            sendIntent.setType("image/*");
+                            sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-                    startActivity(Intent.createChooser(sendIntent, getResources().getString(R.string.texto_enviar)));
+                            startActivity(Intent.createChooser(sendIntent, getResources().getString(R.string.texto_enviar)));
+                        }
+                    }).start();
                 }
             });
         } else {
@@ -171,7 +182,8 @@ public class ConteudoActivity extends AppCompatActivity {
         try {
             File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "guiaComum_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+            Bitmap newBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() / 4, bitmap.getHeight() / 4, false);
+            newBitmap.compress(Bitmap.CompressFormat.PNG, 10, out);
             out.close();
             uri = Uri.fromFile(file);
         } catch (IOException e) {

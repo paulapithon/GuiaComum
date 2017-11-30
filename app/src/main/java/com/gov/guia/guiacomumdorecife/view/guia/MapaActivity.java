@@ -32,7 +32,7 @@ import com.gov.guia.guiacomumdorecife.GuiaComumApplication;
 import com.gov.guia.guiacomumdorecife.R;
 import com.gov.guia.guiacomumdorecife.model.Mapa;
 import com.gov.guia.guiacomumdorecife.util.Constants;
-import com.gov.guia.guiacomumdorecife.util.PopInterpolator;
+import com.gov.guia.guiacomumdorecife.util.view.PopInterpolator;
 
 import java.util.HashMap;
 

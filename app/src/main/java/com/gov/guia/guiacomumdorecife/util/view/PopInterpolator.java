@@ -1,4 +1,4 @@
-package com.gov.guia.guiacomumdorecife.util;
+package com.gov.guia.guiacomumdorecife.util.view;
 
 import android.view.animation.Interpolator;
 

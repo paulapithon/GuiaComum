@@ -5,6 +5,7 @@
     <string name="imagens_cabecalho">%1$d/%2$d</string>
 
     <string name="maps_pesquisa">geo:%1$s,%2$s?q=%3$s</string>
+    <string name="maps_pesquisa_sem_texto">geo:%1$s,%2$s</string>
     <string name="maps_split">, </string>
 
     <string name="texto_enviar">Enviar para:</string>
@@ -56,6 +57,15 @@
     <string name="conteudo_internet">É necessário conexão para visualizar essa página.</string>
     <string name="titulo_internet">Não conectado à internet!</string>
 
-    <string name="envio_participe">Formulário enviado ao Guia Comum com sucesso!</string>
+    <string name="envio_email">appguiacomum@gmail.com</string>
+    <string name="envio_senha">123recife</string>
+    <string name="envio_titulo">Bem-vindo ao Guia Comum!</string>
+    <string name="envio_corpo">%1$s, bem-vindo ao Recife que resiste com afeto!
+        \n\nFicamos gratos com sua participação em nossa versão beta. Iremos analisar o conteúdo enviado e verificar a possibilidade de publicação. Em caso de aprovação, informaremos o momento em que seu material será publicado.
+        \n\nEm breve você receberá uma próxima newsletter para acompanhar nossas atualizações.
+        \n\nAtenciosamente,
+        \n\nSua equipe Guia Comum do Recife.</string>
+
+
 
 </resources>

@@ -8,12 +8,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,7 +36,7 @@ public class ParticiparService extends Service {
     private String imageUrl;
     private String audioUrl;
 
-    private String name;
+    private String nome;
     private String descricao;
     private String email;
     private Uri imageUri;
@@ -54,7 +53,7 @@ public class ParticiparService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         Bundle args = intent.getBundleExtra(Constants.SERVICO_BUNDLE);
-        name = args.getString(Constants.SERVICO_NOME);
+        nome = args.getString(Constants.SERVICO_NOME);
         email = args.getString(Constants.SERVICO_EMAIL);
         descricao = args.getString(Constants.SERVICO_DESCRICAO);
         if (args.getString(Constants.SERVICO_AUDIO) != null) {
@@ -148,7 +147,7 @@ public class ParticiparService extends Service {
     private void saveDatabase () {
 
         FirebaseDatabase.getInstance().getReference().child(Constants.DATABASE_SUGESTAO).push().setValue(new Sugestao(
-                name,
+                nome,
                 email,
                 descricao,
                 imageUrl,
@@ -156,9 +155,84 @@ public class ParticiparService extends Service {
                 localCoordenadas
         ));
 
-        Toast.makeText(this, getResources().getString(R.string.envio_participe), Toast.LENGTH_SHORT).show();
-
+        sendEmail();
         stopSelf();
     }
 
+    private void sendEmail () {
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                        .permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                try {
+                    GMailSender sender = new GMailSender(getResources().getString(R.string.envio_email), getResources().getString(R.string.envio_senha));
+                    sender.sendMail(getResources().getString(R.string.envio_titulo),
+                            getMessage(),
+                            getResources().getString(R.string.envio_email),
+                            email);
+                } catch (Exception e) {
+                    Log.e("SendMail", e.getMessage(), e);
+                }
+            }
+        }).start();
+    }
+
+    private String getMessage () {
+        return "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
+                "\t\t\t<tbody>\n" +
+                "\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t<td align=\"center\" bgcolor=\"#ffffff\" style=\"background-color:#ffffff;\" valign=\"top\">\n" +
+                "\t\t\t\t\t\t<br />\n" +
+                "\t\t\t\t\t\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\">\n" +
+                "\t\t\t\t\t\t\t<tbody>\n" +
+                "\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t<td align=\"center\" style=\"padding-left:13px; padding-right:13px; background-color:rgb(246, 174, 177);\" valign=\"top\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t<tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"background-color: rgb(246, 174, 177);\">&nbsp;\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: noto serif; font-size: 36px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong><span style=\"color:#161781;\">" + nome + ", bem-vindo(a) ao Recife que resiste com afeto</span></strong></td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"padding-top: 15px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<img src=\"https://firebasestorage.googleapis.com/v0/b/guiacomum.appspot.com/o/sugestao%2Femail%2Fhtml_titulo.png?alt=media&token=74c45022-b71f-4721-9a87-35f09a77a948\" alt=\"\" height=\"326\" style=\"width: 580px; height: 70px;\" /></td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: Noto serif; color: rgb(0, 0, 0); font-size: 15px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span style=\"font-size:18px;\"><span style=\"color: rgb(22, 23, 129);\"><br>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tFicamos gratos com sua participa&ccedil;&atilde;o em nossa vers&atilde;o beta. Iremos analisar o conte&uacute;do enviado e verificar a possibilidade de publica&ccedil;&atilde;o. Em caso de aprova&ccedil;&atilde;o, informaremos o momento em que seu material ser&aacute; publicado.<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tEm breve voc&ecirc; receber&aacute; uma pr&oacute;xima newsletter para acompanhar nossas atualiza&ccedil;&otilde;es.<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tAtenciosamente,<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tSua equipe Guia Comum do Recife</span></span></td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">&nbsp;\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t</tbody>\n" +
+                "\t\t\t\t\t\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t\t\t\t\t</td>\n" +
+                "\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t\t<tr>\n" +
+                "\t\t\t\t\t\t\t\t\t<td align=\"center\" style=\"padding-left:13px; padding-right:13px; background-color:rgb(246, 174, 177);\" valign=\"top\">\n" +
+                "\t\t\t\t\t\t\t\t\t\t<img alt=\"\" height=\"318\" src=\"https://firebasestorage.googleapis.com/v0/b/guiacomum.appspot.com/o/sugestao%2Femail%2Fhtml_rodape.jpg?alt=media&token=c5571fa7-72cd-4e09-8023-3b0aa7b80944\" style=\"width: 590px; height: 78px;\" width=\"2390\" /></td>\n" +
+                "\t\t\t\t\t\t\t\t</tr>\n" +
+                "\t\t\t\t\t\t\t</tbody>\n" +
+                "\t\t\t\t\t\t</table>\n" +
+                "\t\t\t\t\t\t<br />\n" +
+                "\t\t\t\t\t\t&nbsp;</td>\n" +
+                "\t\t\t\t</tr>\n" +
+                "\t\t\t</tbody>\n" +
+                "\t\t</table>";
+    }
 }
