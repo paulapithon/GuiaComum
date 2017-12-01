@@ -142,7 +142,7 @@ public class ParticiparActivity extends AppCompatActivity {
                 args.putString(Constants.SERVICO_DESCRICAO, mEditDescricao.getText().toString());
             }
             if (audioUri!= null) { args.putString(Constants.SERVICO_AUDIO, audioUri.toString()); }
-            if (audioUri != null) { args.putString(Constants.SERVICO_IMAGEM, imageUri.toString()); }
+            if (imageUri != null) { args.putString(Constants.SERVICO_IMAGEM, imageUri.toString()); }
             args.putBoolean(Constants.SERVICO_LOCALIZACAO, hasLocation);
 
             intent.putExtra(Constants.SERVICO_BUNDLE, args);

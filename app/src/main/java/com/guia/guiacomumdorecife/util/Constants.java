@@ -17,7 +17,7 @@ public class Constants {
     public static String DATABASE_LIVRO_TITULO = "titulo_livro";
 
     public static String TIPO_FOTO = ".jpg";
-    public static String TIPO_AUDIO = ".mp3";
+    public static String TIPO_AUDIO = ".3gp";
 
     public static String SERVICO_NOME = "nome_servico";
     public static String SERVICO_EMAIL = "email_servico";
