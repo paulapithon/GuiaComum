@@ -199,7 +199,7 @@ public class ParticiparService extends Service {
                 "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: noto serif; font-size: 36px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong><span style=\"color:#161781;\">" + nome + ", bem-vindo(a) ao Recife que resiste com afeto</span></strong></td>\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong><span style=\"color:#161781;\">" + nome + ", bem-vind&lt;3 ao Recife que resiste com afeto!</span></strong></td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"padding-top: 15px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
@@ -208,11 +208,12 @@ public class ParticiparService extends Service {
                 "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t<td style=\"font-family: Noto serif; color: rgb(0, 0, 0); font-size: 15px; text-align: center; vertical-align: middle; background-color: rgb(246, 174, 177);\">\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span style=\"font-size:18px;\"><span style=\"color: rgb(22, 23, 129);\"><br>\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tFicamos gratos com sua participa&ccedil;&atilde;o em nossa vers&atilde;o beta. Iremos analisar o conte&uacute;do enviado e verificar a possibilidade de publica&ccedil;&atilde;o. Em caso de aprova&ccedil;&atilde;o, informaremos o momento em que seu material ser&aacute; publicado.<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tFicamos gratos com sua participa&ccedil;&atilde;o em nossa vers&atilde;o beta. Estamos felizes que seu encanto pela cidade possa fazer parte desse guia criativo e colaborativo.\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tVamos apreciar sua indica&ccedil;&atilde;o e verificar a melhor forma de inclus&atilde;o do material enviado. Assim que tudo estiver pronto informaremos para que você possa compartilhar.  <br />\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br />\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\tEm breve voc&ecirc; receber&aacute; uma pr&oacute;xima newsletter para acompanhar nossas atualiza&ccedil;&otilde;es.<br />\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<br />\n" +
-                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tAtenciosamente,<br />\n" +
+                "\t\t\t\t\t\t\t\t\t\t\t\t\t\tNovamente, muito obrigada pela participa&ccedil;&atilde;o!<br />\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t\t\tSua equipe Guia Comum do Recife</span></span></td>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +

@@ -9,11 +9,11 @@
     <string name="maps_split">, </string>
 
     <string name="texto_enviar">Enviar para:</string>
-    <string name="conteudo_enviar">Baixe o aplicativo Guia Comum do Recife e conheça mais sobre %1$s!\n\nAcesse agora: https://goo.gl/DddN4Q</string>
+    <string name="conteudo_enviar">Baixe o aplicativo Guia Comum do Recife e conheça mais sobre %1$s!\n\nAcesse agora: https://goo.gl/MgDVgH</string>
     <string name="ler_mais">VER MAIS</string>
 
     <string name="participe_titulo">PARTICIPE</string>
-    <string name="participe_resumo">Envie sua sugestão de outro  lugar ou situação interessante encontrada na cidade.</string>
+    <string name="participe_resumo">Envie sua sugestão de outro lugar ou situação interessante encontrada na cidade.</string>
     <string name="participe_nome">Nome*</string>
     <string name="participe_email">E-mail*</string>
     <string name="participe_descricao">Descrição</string>
@@ -59,7 +59,7 @@
 
     <string name="envio_email">appguiacomum@gmail.com</string>
     <string name="envio_senha">123recife</string>
-    <string name="envio_titulo">Bem-vindo ao Guia Comum!</string>
+    <string name="envio_titulo">Bem-vinde ao Guia Comum!</string>
     <string name="envio_corpo">%1$s, bem-vindo ao Recife que resiste com afeto!
         \n\nFicamos gratos com sua participação em nossa versão beta. Iremos analisar o conteúdo enviado e verificar a possibilidade de publicação. Em caso de aprovação, informaremos o momento em que seu material será publicado.
         \n\nEm breve você receberá uma próxima newsletter para acompanhar nossas atualizações.
