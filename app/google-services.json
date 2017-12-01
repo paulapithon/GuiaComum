@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:339550354542:android:20c916567e0dc25a",
         "android_client_info": {
-          "package_name": "com.gov.guia.guiacomumdorecife"
+          "package_name": "com.guia.guiacomumdorecife"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "339550354542-2ro6qfn28s5t4t5fmb3a045rqnnc6rgj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.gov.guia.guiacomumdorecife",
+            "package_name": "com.guia.guiacomumdorecife",
             "certificate_hash": "6abf107d69c61a8f5d4722a29bd739e2dad8398b"
           }
         },
@@ -26,7 +26,7 @@
           "client_id": "339550354542-hkvggdebg7gchgmb7s6rbvb6bp9poqda.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.gov.guia.guiacomumdorecife",
+            "package_name": "com.guia.guiacomumdorecife",
             "certificate_hash": "76c796f7f6e281b8cd84cb36300f233c70f51f54"
           }
         },

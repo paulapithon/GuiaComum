@@ -5,7 +5,7 @@ apply plugin: 'io.fabric'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.gov.guia.guiacomumdorecife"
+        applicationId "com.guia.guiacomumdorecife"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1

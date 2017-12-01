@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rosa_claro"
-    tools:context="com.gov.guia.guiacomumdorecife.view.guia.ConteudoActivity">
+    tools:context="com.guia.guiacomumdorecife.view.guia.ConteudoActivity">
 
     <include
         android:id="@+id/include2"

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.gov.guia.guiacomumdorecife.view.guia.MapaActivity"
+    tools:context="com.guia.guiacomumdorecife.view.guia.MapaActivity"
     android:background="@color/rosa_claro">
 
-    <com.gov.guia.guiacomumdorecife.util.view.TwoDScrollView
+    <com.guia.guiacomumdorecife.util.view.TwoDScrollView
         android:id="@+id/mapa_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 
 
             </RelativeLayout>
-    </com.gov.guia.guiacomumdorecife.util.view.TwoDScrollView>
+    </com.guia.guiacomumdorecife.util.view.TwoDScrollView>
 
     <ImageView
         android:id="@+id/loading_image"

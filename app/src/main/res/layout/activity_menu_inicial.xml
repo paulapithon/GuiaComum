@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rosa_claro"
-    tools:context="com.gov.guia.guiacomumdorecife.view.MenuInicialActivity">
+    tools:context="com.guia.guiacomumdorecife.view.MenuInicialActivity">
 
     <ImageButton
         android:id="@+id/btn_guia"
@@ -63,7 +63,7 @@
     <ImageButton
         android:id="@+id/btn_creditos"
         android:layout_width="40dp"
-        android:layout_height="25dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"

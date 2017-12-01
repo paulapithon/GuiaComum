@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gov.guia.guiacomumdorecife.view.guia.GaleriaActivity"
+    tools:context="com.guia.guiacomumdorecife.view.guia.GaleriaActivity"
     android:background="@color/rosa_claro">
 
     <com.github.chrisbanes.photoview.PhotoView
