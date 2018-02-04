@@ -8,7 +8,7 @@
     tools:context="com.guia.guiacomumdorecife.view.guia.MapaActivity"
     android:background="@color/rosa_claro">
 
-    <com.guia.guiacomumdorecife.util.view.TwoDScrollView
+    <com.guia.guiacomumdorecife.view.custom.TwoDScrollView
         android:id="@+id/mapa_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 
 
             </RelativeLayout>
-    </com.guia.guiacomumdorecife.util.view.TwoDScrollView>
+    </com.guia.guiacomumdorecife.view.custom.TwoDScrollView>
 
     <ImageView
         android:id="@+id/loading_image"

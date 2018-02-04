@@ -8,6 +8,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
 
     <application
         android:name=".GuiaComumApplication"
@@ -17,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.AberturaActivity"
+            android:name=".view.inicio.AberturaActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,17 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MenuInicialActivity" />
+        <activity android:name=".view.inicio.MenuInicialActivity" />
         <activity android:name=".view.guia.MapaActivity" />
         <activity android:name=".view.guia.LivrosActivity" />
         <activity android:name=".view.guia.ConteudoActivity" />
         <activity android:name=".view.guia.GaleriaActivity" />
         <activity android:name=".view.participe.ParticiparActivity" />
         <activity android:name=".view.participe.TermosActivity" />
-
-        <service android:name=".util.ParticiparService" />
-
-        <activity android:name=".view.CreditosActivity"/>
+        <service android:name=".util.service.ParticiparService" />
+        <activity android:name=".view.inicio.CreditosActivity" />
     </application>
 
 </manifest>

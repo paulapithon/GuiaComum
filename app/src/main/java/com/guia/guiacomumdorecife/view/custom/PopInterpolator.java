@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.util.view;
+package com.guia.guiacomumdorecife.view.custom;
 
 import android.view.animation.Interpolator;
 

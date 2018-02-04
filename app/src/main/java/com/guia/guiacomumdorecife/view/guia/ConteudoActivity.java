@@ -22,7 +22,7 @@ import com.guia.guiacomumdorecife.GuiaComumApplication;
 import com.guia.guiacomumdorecife.R;
 import com.guia.guiacomumdorecife.model.Livro;
 import com.guia.guiacomumdorecife.util.Constants;
-import com.guia.guiacomumdorecife.util.PlayAudio;
+import com.guia.guiacomumdorecife.util.AudioUtil;
 import com.guia.guiacomumdorecife.view.participe.TermosActivity;
 
 import java.io.File;
@@ -100,10 +100,10 @@ public class ConteudoActivity extends AppCompatActivity {
     private void setupPlayer (boolean play) {
         try {
             if (play) {
-                PlayAudio.playAudio(this, livro.getAudio());
+                AudioUtil.playAudio(this, livro.getAudio());
                 mAudioBtn.setColorFilter(getResources().getColor(R.color.rosa_escuro), PorterDuff.Mode.SRC_ATOP);
             } else {
-                PlayAudio.killMediaPlayer();
+                AudioUtil.killMediaPlayer();
                 mAudioBtn.clearColorFilter();
             }
         } catch (Exception e) {

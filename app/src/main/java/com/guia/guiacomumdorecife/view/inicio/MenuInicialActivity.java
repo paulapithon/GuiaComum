@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.view;
+package com.guia.guiacomumdorecife.view.inicio;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.guia.guiacomumdorecife.R;
+import com.guia.guiacomumdorecife.view.camera.CameraActivity;
 import com.guia.guiacomumdorecife.view.guia.MapaActivity;
 import com.guia.guiacomumdorecife.view.participe.ParticiparActivity;
 
@@ -44,16 +45,7 @@ public class MenuInicialActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_camera)
     public void onCamera () {
-        //Cria diálogo para nova feature em breve
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.conteudo_dialogo);
-        builder.setTitle(R.string.titulo_dialogo);
-        builder.setPositiveButton(R.string.ok_dialog, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.dismiss();
-            }
-        });
-        builder.create().show();
+        startActivity(new Intent(this, CameraActivity.class));
     }
 
     private boolean checkInternet () {

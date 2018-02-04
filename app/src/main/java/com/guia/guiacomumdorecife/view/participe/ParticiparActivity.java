@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 import com.guia.guiacomumdorecife.R;
 import com.guia.guiacomumdorecife.util.Constants;
-import com.guia.guiacomumdorecife.util.ParticiparService;
+import com.guia.guiacomumdorecife.util.service.ParticiparService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

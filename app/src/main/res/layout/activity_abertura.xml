@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azul_marinho"
-    tools:context="com.guia.guiacomumdorecife.view.AberturaActivity">
+    tools:context="com.guia.guiacomumdorecife.view.inicio.AberturaActivity">
 
     <ImageView
         android:id="@+id/imagem_inicial"

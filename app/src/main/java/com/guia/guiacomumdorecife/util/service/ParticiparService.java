@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.util;
+package com.guia.guiacomumdorecife.util.service;
 
 import android.annotation.SuppressLint;
 import android.app.Service;
@@ -22,6 +22,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.guia.guiacomumdorecife.R;
 import com.guia.guiacomumdorecife.model.Sugestao;
+import com.guia.guiacomumdorecife.util.Constants;
+import com.guia.guiacomumdorecife.util.mail.GMailSender;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

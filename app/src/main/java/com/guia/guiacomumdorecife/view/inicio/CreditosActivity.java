@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.view;
+package com.guia.guiacomumdorecife.view.inicio;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

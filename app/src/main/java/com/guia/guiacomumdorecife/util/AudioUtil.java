@@ -8,7 +8,7 @@ import android.net.Uri;
  * Created by paula on 10/11/17.
  */
 
-public class PlayAudio {
+public class AudioUtil {
 
     private static MediaPlayer mediaPlayer;
 

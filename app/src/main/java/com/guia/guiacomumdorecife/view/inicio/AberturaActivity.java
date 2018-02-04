@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.view;
+package com.guia.guiacomumdorecife.view.inicio;
 
 import android.content.Intent;
 import android.os.Handler;

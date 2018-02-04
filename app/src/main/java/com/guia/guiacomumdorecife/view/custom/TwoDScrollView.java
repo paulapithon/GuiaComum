@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.util.view;
+package com.guia.guiacomumdorecife.view.custom;
 
 /**
  * Created by paula on 19/11/17.

@@ -1,4 +1,4 @@
-package com.guia.guiacomumdorecife.util;
+package com.guia.guiacomumdorecife.util.mail;
 
 /**
  * Created by paula on 30/11/17.
