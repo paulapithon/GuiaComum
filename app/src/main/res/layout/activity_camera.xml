@@ -14,17 +14,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/bg_frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/bg_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/camera_background" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/bg_bottom"
         android:layout_width="0dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"

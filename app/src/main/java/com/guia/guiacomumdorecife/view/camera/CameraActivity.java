@@ -68,7 +68,7 @@ import butterknife.OnClick;
  */
 
 public class CameraActivity extends AppCompatActivity {
-    private static final int REQUEST_CAMERA_PERMISSION = 101;
+
     private CameraRenderer renderer;
     private TextureView textureView;
 
@@ -76,6 +76,10 @@ public class CameraActivity extends AppCompatActivity {
     CircularImageView imagemPreview;
     @BindView(R.id.flash_btn)
     ImageButton flashButton;
+    @BindView(R.id.bg_bottom)
+    ImageView bgBaixo;
+    @BindView(R.id.bg_frame)
+    ImageView bgMoldura;
 
     private String recentPath;
     private boolean flashOn;
@@ -86,14 +90,7 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         ButterKnife.bind(this);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                REQUEST_CAMERA_PERMISSION);
-        } else {
-            setupCameraPreviewView();
-        }
-
+        setupCameraPreviewView();
         setarImagemPreview();
 
         flashOn = false;
@@ -162,26 +159,6 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CAMERA_PERMISSION: {
-                boolean granted = true;
-                for (int i = 0; i < grantResults.length; i++) {
-                    if (grantResults[i] != PackageManager
-                            .PERMISSION_GRANTED) {
-                        granted = false;
-                    }
-                }
-                if (granted) {
-                    setupCameraPreviewView();
-                } else {
-                    finish();
-                }
-            }
-        }
-    }
-
     void setupCameraPreviewView() {
         renderer = new CameraRenderer(this);
         textureView = findViewById(R.id.textura_camera);
@@ -238,6 +215,16 @@ public class CameraActivity extends AppCompatActivity {
 
         Thread t = new Thread(r);
         t.start();
+
+        bgMoldura.setImageDrawable(getResources().getDrawable(R.drawable.camera_background_snap));
+        bgBaixo.setColorFilter(getResources().getColor(R.color.azul_marinho));
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                bgMoldura.setImageDrawable(getResources().getDrawable(R.drawable.camera_background));
+                bgBaixo.setColorFilter(getResources().getColor(R.color.rosa_claro));
+            }
+        }, 100);
 
     }
 
