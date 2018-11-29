@@ -1,0 +1,6 @@
+framework module Pods_Guia_Comum_Do_RecifeTests {
+  umbrella header "Pods-Guia Comum Do RecifeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
