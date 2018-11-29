@@ -27,6 +27,8 @@ class MapViewController: UIViewController {
     
     func loadFirebase() {
         ref = Database.database().reference()
+        
+        var count = 0;
         ref.child("mapa").observeSingleEvent(of: .value, with: { (snapshot) in
             
             self.downloaded = true
@@ -49,8 +51,9 @@ class MapViewController: UIViewController {
                     livros.append(livro)
                 }
                 mapa.livros = livros
+                mapa.count = count
                 self.mapaData.append(mapa)
-            
+                count += 1
             }
         }) { (error) in
             print(error.localizedDescription)

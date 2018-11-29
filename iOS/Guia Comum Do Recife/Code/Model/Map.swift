@@ -12,5 +12,6 @@ class Map {
     
     var nome:String = ""
     var livros = [Livro]()
+    var count:Int = 0
     
 }

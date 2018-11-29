@@ -17,7 +17,7 @@ class LivrosController: UIViewController {
         super.viewDidLoad()
         
         print("mapa name: \(mapa.nome)")
-        image.image = UIImage(named: mapa.nome)
+        image.image = UIImage(named: String(mapa.count))
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
