@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -716,9 +715,8 @@
         <image name="mapa" width="1080" height="1084"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="00I-dD-jga"/>
-        <segue reference="wIK-hm-wQ6"/>
+        <segue reference="npj-40-GUz"/>
         <segue reference="Ida-Le-e6k"/>
-        <segue reference="koJ-pD-XPI"/>
+        <segue reference="84x-Nn-r7J"/>
     </inferredMetricsTieBreakers>
 </document>
