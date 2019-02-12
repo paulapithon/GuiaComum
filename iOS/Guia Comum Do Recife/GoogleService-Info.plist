@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>339550354542-s0o5ic2nao9rbj16bbg3a01pau8r3par.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.339550354542-s0o5ic2nao9rbj16bbg3a01pau8r3par</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCyexNvSc42tiWGG00_j-P9xY0x-GSZPag</string>
+	<key>GCM_SENDER_ID</key>
+	<string>339550354542</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gov.guia.Guia-Comum-Do-Recife</string>
+	<key>PROJECT_ID</key>
+	<string>guiacomum</string>
+	<key>STORAGE_BUCKET</key>
+	<string>guiacomum.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:339550354542:ios:054aa977ff9c38ef</string>
+	<key>DATABASE_URL</key>
+	<string>https://guiacomum.firebaseio.com</string>
+</dict>
+</plist>

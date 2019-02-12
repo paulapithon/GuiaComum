@@ -10,8 +10,8 @@
 		1CEF362367BEA253B4565A81 /* Pods_Guia_Comum_Do_Recife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4B7A9D97A526B38CE16BA1 /* Pods_Guia_Comum_Do_Recife.framework */; };
 		9AA382A557B7A1048A0108F4 /* Pods_Guia_Comum_Do_RecifeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48830AE5127E2493712FEB81 /* Pods_Guia_Comum_Do_RecifeTests.framework */; };
 		B47ED0ACB52E313A3E7A0AD5 /* Pods_Guia_Comum_Do_RecifeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E499BA9E179C19C539B1EF /* Pods_Guia_Comum_Do_RecifeUITests.framework */; };
+		DA1A616D22130E1200B9C9F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA1A616C22130E1200B9C9F9 /* GoogleService-Info.plist */; };
 		DA3D047921AB567000430E8F /* LivrosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3D047821AB566F00430E8F /* LivrosController.swift */; };
-		DA3E5C8021AECC730056A39E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA3E5C7F21AECC720056A39E /* GoogleService-Info.plist */; };
 		DA3E5C8221AF54350056A39E /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E5C8121AF54350056A39E /* DescriptionController.swift */; };
 		DA56C29D1FBBAF8C00985FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C29C1FBBAF8C00985FE6 /* AppDelegate.swift */; };
 		DA56C29F1FBBAF8C00985FE6 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C29E1FBBAF8C00985FE6 /* MenuController.swift */; };
@@ -52,8 +52,8 @@
 		925F9C1B60E68F9CFCA51544 /* Pods-Guia Comum Do RecifeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guia Comum Do RecifeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guia Comum Do RecifeTests/Pods-Guia Comum Do RecifeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A406A98DBBAEADC5C6ED685D /* Pods-Guia Comum Do RecifeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guia Comum Do RecifeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Guia Comum Do RecifeUITests/Pods-Guia Comum Do RecifeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3771F4D14322A49A85972A0 /* Pods-Guia Comum Do Recife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guia Comum Do Recife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Guia Comum Do Recife/Pods-Guia Comum Do Recife.debug.xcconfig"; sourceTree = "<group>"; };
+		DA1A616C22130E1200B9C9F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA3D047821AB566F00430E8F /* LivrosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivrosController.swift; sourceTree = "<group>"; };
-		DA3E5C7F21AECC720056A39E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Documents/Personal/Guia Comum/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA3E5C8121AF54350056A39E /* DescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 		DA56C2991FBBAF8C00985FE6 /* Guia Comum Do Recife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guia Comum Do Recife.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA56C29C1FBBAF8C00985FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				DA56C2A31FBBAF8D00985FE6 /* Assets.xcassets */,
 				DA56C2A51FBBAF8D00985FE6 /* Launchscreen.storyboard */,
 				DA56C2A81FBBAF8D00985FE6 /* Info.plist */,
-				DA3E5C7F21AECC720056A39E /* GoogleService-Info.plist */,
+				DA1A616C22130E1200B9C9F9 /* GoogleService-Info.plist */,
 				DACB2C2C21AB445400F71A87 /* Code */,
 			);
 			path = "Guia Comum Do Recife";
@@ -322,7 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAADD2CC21A8426400A24EE8 /* Main.storyboard in Resources */,
-				DA3E5C8021AECC730056A39E /* GoogleService-Info.plist in Resources */,
+				DA1A616D22130E1200B9C9F9 /* GoogleService-Info.plist in Resources */,
 				DA56C2A71FBBAF8D00985FE6 /* Launchscreen.storyboard in Resources */,
 				DA56C2A41FBBAF8D00985FE6 /* Assets.xcassets in Resources */,
 			);
@@ -604,12 +604,16 @@
 			baseConfigurationReference = B3771F4D14322A49A85972A0 /* Pods-Guia Comum Do Recife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VG9FQ85XD7;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Guia Comum Do Recife/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gov.guia.Guia-Comum-Do-Recife";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -620,12 +624,16 @@
 			baseConfigurationReference = 51D3BEF9FA413145AA205E1C /* Pods-Guia Comum Do Recife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VG9FQ85XD7;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Guia Comum Do Recife/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gov.guia.Guia-Comum-Do-Recife";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

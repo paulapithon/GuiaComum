@@ -62,11 +62,11 @@ class LivroController: UIViewController {
         abstract.text = livro.resumo
         
         //Set main text
-        if livro.texto == "" {
+//        if livro.texto == "" {
             more.isHidden = true
-        } else {
-            more.isHidden = false
-        }
+//        } else {
+//            more.isHidden = false
+//        }
     
         //Load image
         if (livro.imagens.count > 0) {
